@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+    <script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+    <style type="text/css">
+/*
+        id 选择器和派生选择器
+与页面中的其他p和h2元素不同，sidebar块下面的元素这两个元素拥有这些属性
+*/
+
+        #sidebar p {
+            font-style: italic;
+            text-align: right;
+            margin-top: 0.5em;
+        }
+        #sidebar h2 {
+            font-size: 1em;
+            font-weight: normal;
+            font-style: italic;
+            margin: 0;
+            line-height: 1.5;
+            text-align: right;
+        }
+
+        /*类选择器
+        类选择器以一个点号显示
+        类名的第一个字符不能使用数字！它无法在 Mozilla 或 Firefox 中起作用。
+        */
+        .center {text-align: center}
+
+        /*class 也可被用作派生选择器：(fancy是类class名字，td是标签属性名字)*/
+        .fancy td {
+            color: #f60;
+            background: #666;
+        }
+        /*元素也可以基于它们的类而被选择： （与上面两者作用相同）*/
+        td.fancy {
+            color: #f60;
+            background: #666;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1 class="center">
+    This heading will be center-aligned
+</h1>
+
+<p class="center">
+    This paragraph will also be center-aligned.
+</p>
+<table>
+    <tr>
+        <td class="fancy">td</td>
+    </tr>
+</table>
+<p>
+    只有在规定了 !DOCTYPE 时，IE7 和 IE8 才支持属性选择器。在 IE6 及更低的版本中，不支持属性选择。
+</p>
+
+</body>
+</html>

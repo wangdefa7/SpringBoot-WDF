@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滑动效果</title>
+    <script src="jquery/jquery-3.4.1/jquery-3.4.1.js"></script>
+    <style type="text/css">
+        #div1{
+
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#btn1").click(function () {//这三个text展示了三个不同函数执行的时间
+                $("#text").html("fadeIn 开始出现");
+                $("#div1").fadeIn(3000,function () {
+                    $("#text").html("fadeOut 开始消失");
+                });//淡出（出现） 可加参数 slow，具体的时间，或为空
+                $("#div1").fadeOut(3000,function () {
+                    $("#text").html("演示完毕");
+                });//淡入（消失）
+            });
+            $("#btn2").click(function () {
+                $("#div1").fadeToggle();
+            });
+            $("#btn3").click(function () {
+                $("#text").html("开始渐变")
+                $("#div1").fadeTo(2000,0.2,function () {
+                    $("#text").html("演示完毕")
+                })
+            });
+            $("#btn4").click(function () {
+                $("#text").html("slideDown演示")
+                $("#div1").slideDown(2000,function () {
+                    $("#text").html("slideUp演示")
+                });
+                $("#div1").slideUp(2000,function () {
+                    $("#text").html("slideToggle演示")
+                });
+                $("#div1").slideToggle(2000,function () {
+                    $("#text").html("slideToggle演示完毕")
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+$("#div1").fadeIn(3000);//淡出（出现） 可加参数 slow，具体的时间，或为空
+$("#div1").fadeOut(3000);//淡入（消失）<br>
+例子：默认为display:none;
+<hr>
+<br>
+在 fadeIn() 与 fadeOut() 方法之间进行切换。
+如果元素已淡出，则 fadeToggle() 会向元素添加淡入效果。
+如果元素已淡入，则 fadeToggle() 会向元素添加淡出效果。
+<hr>
+fadeTo() 方法允许渐变为给定的不透明度（值介于 0 与 1 之间）。
+fadeTo() 方法中必需的 opacity 参数将淡入淡出效果设置为给定的不透明度（值介于 0 与 1 之间）。
+可选的 callback 参数是该函数完成后所执行的函数名称。
+$(selector).fadeTo(speed,opacity,callback);//不透明度在第二项设置
+<hr>
+<button id="btn1"> 淡入淡出</button>
+<button id="btn2">fadeToggle()方法淡入淡出</button>
+<button id="btn3"> fadeTo() 方法</button>
+<button id="btn4">滑动面板</button>
+<p id="text"></p>
+<div id="div1" style="display:none;height: 100px;width: 100px;background-color: lime">
+
+</div>
+
+</body>
+</html>

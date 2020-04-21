@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select2-Test</title>
+
+    <!-- 加载 Jquery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- 加载 Select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+</head>
+<body>
+<select class="form-control" id="id-select2">
+    <option value=""></option>
+    <option value="i1">一条</option>
+    <option value="i2">二条</option>
+</select>
+<select class="form-control" id="id-select2-1">
+
+</select>
+<script type="text/javascript">
+
+    //定义模拟数据 ##注意数据格式
+    var sdata = [
+        {id: 1, text:'OPS-COFFEE-1'},
+        {id: 2, text:'OPS-COFFEE-2'},
+        {id: 3, text:'OPS-COFFEE-3'}
+    ];
+
+    $("#id-select2").select2({
+        placeholder:"默认提示语" ,//默认提示语,提示语生效，必须有一个value为空的option
+        //minimumResultsForSearch:-1, //关闭搜索框
+        // data:sdata, //两个数据属性id和text,其他属性也可以设置
+        width:'30%',
+        ajax:{
+            url:'/select2data',
+            dataType:'json',
+            delay:250,//配置告诉select2在用户停止输入多少毫秒后开始查询，合理设置可以避免频繁向后端发送请求
+            data:function (params) {//向后端发送的参数
+                return {
+                    search:params.term
+                }
+            },
+            processResults:function (data) {// 返回的数据
+                console.log(data)
+                return {
+                    results:data
+                }
+            },
+            cache:false
+        }
+    });
+    $("#id-select2").val(2).trigger("change")
+
+    $('#id-select2-1').select2({
+        placeholder: 'Ajax后端获取数据示例',
+        width:'30%',
+        ajax: {
+            url: "/select2data2",
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    search: params.term,//定义了要传递给后端的查询参数，search为发送到服务端的参数名，params.term表示输入框中输入的内容
+                    site:   'msg'//输入OPS时，服务端接受到的完整参数就是/sdata.json?search=OPS&site=msg
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 2
+        //ajax异步请求通常我们会配合配置项minimumInputLength使用，这个配置项的意思是输入指定长度的字符后开始搜索，也就是点击select选择框默认不会去后台请求数据，当你输入指定长度的字符时才会去搜索
+        /*width： 宽度，例如100%
+
+    multiple： 是否支持多选，默认false
+
+    closeOnSelect： 是否选中后关闭选择框，默认true
+
+    tags： 是否可以动态创建选项
+
+    disabled： 是否禁用
+
+    debug： 是否开启debug模式*/
+    });
+    /*    $(function () {
+
+        });*/
+
+</script>
+</body>
+</html>
