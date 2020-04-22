@@ -102,6 +102,13 @@
             <version>1.6.1</version>
         </dependency>
 
+        <!-- json-->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20180813</version>
+        </dependency>
+
     </dependencies>
 
     <build>
