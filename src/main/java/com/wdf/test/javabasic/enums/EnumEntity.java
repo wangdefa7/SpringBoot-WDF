@@ -1,5 +1,10 @@
-package com.wdf.test.javabasic.enum_;
+package com.wdf.test.javabasic.enums;
 
+/**
+ * @Author WDF
+ * @Description  枚举类，一定得有一个构造方法
+ * @Date 15:30  2020/4/28
+ **/
 public enum EnumEntity {
 
     SUCCESS(true,0,"成功"),

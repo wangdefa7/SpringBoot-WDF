@@ -1,4 +1,4 @@
-package com.wdf.test.javabasic.enum_;
+package com.wdf.test.javabasic.enums;
 
 /**
  * @ClassName: EnumTest
