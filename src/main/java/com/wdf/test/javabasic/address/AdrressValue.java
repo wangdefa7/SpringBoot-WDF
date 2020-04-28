@@ -19,8 +19,11 @@ public class AdrressValue {
     }
 
      static void test(StringBuffer a, StringBuffer b) {
-        StringBuffer c = a.append("hhhh");
+        System.out.println("b "+ b);
+        StringBuffer c = a.append("hhhh");//a在append以后，把主方法里面的参数也改变了
+        System.out.println("c "+ c);
         a = b;
+        System.out.println("a  "+a);
         b = c;
         System.out.println("test: " + a + "  " + b);//ooo  xxxhhhh
     }
