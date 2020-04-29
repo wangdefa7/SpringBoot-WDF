@@ -15,6 +15,7 @@ public class FileStreamTest {
         try {
             //创建流
             FileInputStream fileInputStream = new FileInputStream("E:\\test.txt");
+            //FileOutputStream 如果文件不存在，那么将自动创建。
             FileOutputStream fileOutputStream = new FileOutputStream("E:\\test-byte.txt");
 
             //使用
