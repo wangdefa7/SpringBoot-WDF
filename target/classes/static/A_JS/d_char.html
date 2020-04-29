@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串</title>
+
+    <script>
+        var x = "John";
+        var y = new String("John");//对象
+        console.info(typeof x) // 返回 String
+        console.info(typeof y )// 返回 Object
+
+        console.info(x==y);//==数值一致返回true
+        console.info(x===y);//===类型不一致返回false，为绝对相等，即数据类型与值都必须相等。
+
+        console.log(x.constructor)
+        console.log(x.isPrototypeOf(y))
+
+    </script>
+</head>
+<body>
+
+<p>点击按钮创建及增加字符串变量。</p>
+<button onclick="myFunction()">点击这里</button>
+<p id="demo0"></p>
+<p id="demo1"></p>
+<p id="demo2"></p>
+<script>
+    function myFunction()
+    {
+        var x=5+5;
+        var y="5"+5;
+        var z="Hello"+5;
+        var demoP=document.getElementById("demo0");
+        demoP.innerHTML=x + "<br>" + y + "<br>" + z;
+        f1();
+        f2();
+    }
+
+    //布尔值转换为字符串
+    function f1() {
+        String(false)        // 返回 "false"
+        String(true)         // 返回 "true"
+       // Boolean 方法 toString() 也有相同的效果。
+        false.toString()     // 返回 "false"
+        true.toString()      // 返回 "true"
+    }
+
+    function f2() {
+        var y = "5";
+        var x = + y;
+        document.getElementById("demo1").innerHTML =
+            "x="+x+typeof y + "<br>" + typeof x;
+    }
+</script>
+</body>
+<!--
+var character = carname[7];
+字符串的索引从 0 开始，这意味着第一个字符索引值为 [0],第二个为 [1], 以此类推。
+
+在字符串添加转义字符来使用引号：
+实例
+var x = 'It\'s alright';
+var y = "He is called \"Johnny\"";
+
+ length 来计算字符串的长度：
+实例
+var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var sln = txt.length;
+
+转义：
+\'	单引号
+\"	双引号
+\\	反斜杠
+\n	换行
+\r	回车
+\t	tab(制表符)
+\b	退格符
+\f	换页符
+
+
+字符串属性
+ typeof 操作符来检测变量的数据类型。
+constructor	返回创建字符串属性的函数
+length	返回字符串的长度
+prototype	允许您向对象添加属性和方法
+
+null是一个只有一个值的特殊类型。表示一个空对象引用。设置为 null 来清空对象
+设置为 undefined 来清空对象
+var person = undefined;     // 值为 undefined, 类型为 undefined
+
+undefined 和 null 的区别
+实例
+null 和 undefined 的值相等，但类型不等：
+typeof undefined             // undefined
+typeof null                  // object
+null === undefined           // false
+null == undefined            // true
+
+
+
+JavaScript 数据类型
+在 JavaScript 中有 6 种不同的数据类型：
+string
+number
+boolean
+object
+function
+symbol
+3 种对象类型：
+Object
+Date
+Array
+2 个不包含任何值的数据类型：
+null
+undefined
+
+
+NaN 的数据类型是 number
+数组(Array)的数据类型是 object
+日期(Date)的数据类型为 object
+null 的数据类型是 object
+未定义变量的数据类型为 undefined
+
+不理想的自动转化 ：
+5 + null    // 返回 5         null 转换为 0
+"5" + null  // 返回"5null"   null 转换为 "null"
+"5" + 1     // 返回 "51"      1 转换为 "1"
+"5" - 1     // 返回 4         "5" 转换为 5
+-->
+
+</html>

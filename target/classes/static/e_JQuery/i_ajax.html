@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+    <script src="jquery/jquery-3.4.1/jquery-3.4.1.js"></script>
+    <style type="text/css">
+        p{
+            white-space: pre-wrap
+        }
+    </style>
+</head>
+<body>
+<p>
+    $(selector).load(URL,data,callback);
+    必需的 URL 参数规定您希望加载的 URL。
+    可选的 data 参数规定与请求一同发送的查询字符串键/值对集合。
+    可选的 callback 参数是 load() 方法完成后所执行的函数名称
+</p>
+<p>
+    回调函数可以设置不同的参数：
+    responseTxt - 包含调用成功时的结果内容
+    statusTXT - 包含调用的状态
+    xhr - 包含 XMLHttpRequest 对象
+    <hr>
+    $("#div1").load("demo_test.txt",function(responseTxt,statusTxt,xhr){
+    if(statusTxt=="success")
+    alert("外部内容加载成功!");
+    if(statusTxt=="error")
+    alert("Error: "+xhr.status+": "+xhr.statusText);
+    });
+</p>
+<hr>
+<p>
+    get方法：
+    $.get(URL,callback);
+    post方法：
+    $.post(URL,data,callback);
+</p>
+</body>
+</html>

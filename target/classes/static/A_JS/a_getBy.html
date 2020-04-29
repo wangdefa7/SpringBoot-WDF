@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素</title>
+
+
+</head>
+
+
+<body>
+<p id="p2"> 第一次文字</p>
+<a id="a2"> 第一次文字</a>
+<a id="a1"> 第一次文字</a>
+<p id="p1"> 第一次文字</p>
+<div id="div1" class="div1">div 第一次</div>
+
+
+</body>
+<script>
+    setTimeout(function () {
+        var div_var = "拼接变量<p>未定义："
+        var div_var_undified;
+        document.getElementById("p2").innerText="p  innerText";//更改元素内容
+        document.getElementById("a2").innerHTML="a  innerHTML";//更改网页元素内容
+        document.getElementById("a1").innerText="改变文字";//更改元素内容
+        document.getElementById("p1").innerHTML="p段落改变";//更改网页元素内容
+        /*使用 id 属性来查找 HTML 元素的 JavaScript 代码 。
+        innerHTML = "段落已修改。" 是用于修改元素的 HTML 内容(innerHTML)的 JavaScript 代码。*/
+        document.getElementById("div1").innerHTML="div1改变----"+div_var+div_var_undified;
+        //document.write(Date());//打印一条数据 仅仅向文档输出写内容。
+        //如果在文档已完成加载后执行 document.write，整个 HTML 页面将被覆盖。
+        console.log("打印日志到浏览器");
+        // alert("alert");
+        // window.alert("window.alert");
+    },2000)
+
+</script>
+
+</html>

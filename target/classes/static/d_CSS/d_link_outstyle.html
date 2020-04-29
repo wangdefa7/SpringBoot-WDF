@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插入外部样式表</title>
+    <!--插入语句,注意引入文件是href -->
+    <link rel="stylesheet" type="text/css" href="css/link_test.css">
+
+    <!--内部优先级高于外部优先级-->
+    <style type="text/css">
+        hr {color: sienna;}
+        p {margin-left: 20px;}
+        body {background-image: url("../img/beautiful.jpg");}
+    </style>
+</head>
+<body>
+css文件创建后直接写样式即可,什么头尾也不加。
+hr {color: sienna;}
+p {margin-left: 20px;}
+body {background-image: url("img/janey.jpg");}
+<p style="color: sienna; margin-left: 20px">
+    This is a paragraph
+</p>
+
+</body>
+</html>

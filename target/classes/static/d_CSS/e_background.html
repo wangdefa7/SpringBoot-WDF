@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>背景</title>
+    <style type="text/css">
+
+        body {background-color: yellow}
+        h1 {background-color: #00ff00}
+        h2 {background-color: transparent}
+        /*p {background-color: rgb(250,0,255)}*/
+
+        p.no2 {background-color: gray; padding: 20px;}
+
+        p.flower {background-image: url(../img/janey.jpg);height: 300px}
+
+        /* 图片摆放*/
+        div.repeat-x{
+            background-image: url(../img/beautiful.jpg);
+            background-repeat: repeat-x
+        }
+        div.repeat-y{
+            background-image: url(../img/beautiful.jpg);
+            background-repeat: repeat-y
+        }
+        div.repeat-no{
+            background-image: url(../img/beautiful.jpg);
+            background-repeat: no-repeat
+        }
+        div.repeat{
+            background-image: url(../img/beautiful.jpg);
+            background-repeat: repeat
+        }
+        /*  background-position 属性 图片定位*/
+        body
+        {
+            background-image:url(../img/janey.jpg);
+            background-repeat:no-repeat;
+            background-position:center;
+        }
+    </style>
+
+</head>
+
+<body>
+在 body 元素中将一个背景图像居中放置：
+body
+{
+background-image:url('/i/eg_bg_03.gif');
+background-repeat:no-repeat;
+background-position:center;
+}
+<hr>
+用百分数值将图像在其元素中居中，这很容易：
+body
+{
+background-image:url('/i/eg_bg_03.gif');
+background-repeat:no-repeat;
+background-position:50% 50%;
+}
+<hr>
+把一个图像放在水平方向 2/3、垂直方向 1/3 处，可以这样声明：
+body
+{
+background-image:url('/i/eg_bg_03.gif');
+background-repeat:no-repeat;
+background-position:66% 33%;
+}
+background-position 的默认值是 0% 0%，在功能上相当于 top left。这就解释了背景图像为什么总是从元素内边距区的左上角开始平铺，除非您设置了不同的位置值
+<hr>
+设置值为 50px 100px，图像的左上角将在元素内边距区左上角向右 50 像素、向下 100 像素的位置上：
+body
+{
+background-image:url('/i/eg_bg_03.gif');
+background-repeat:no-repeat;
+background-position:50px 100px;
+}
+<hr>
+通过 background-attachment 属性防止这种滚动。通过这个属性，可以声明图像相对于可视区是固定的（fixed），因此不会受到滚动的影响：
+body
+{
+background-image:url(/i/eg_bg_02.gif);
+background-repeat:no-repeat;
+background-attachment:fixed
+}
+<hr>
+background-color 不能继承，其默认值是 transparent。transparent 有“透明”之意。也就是说，如果一个元素没有指定背景色，那么背景就是透明的，这样其祖先元素的背景才能可见。
+<br>
+设置一个背景图像，必须为这个属性设置一个 URL 值：
+body {background-image: url(/i/eg_bg_04.gif);}
+<p class="flower">
+    为一个段落应用了一个背景，而不会对文档的其他部分应用背景：
+
+    p.flower {background-image: url(/i/eg_bg_03.gif);}
+</p>
+
+<h1>这是标题 1</h1>
+<h2>这是标题 2</h2>
+<p>这是段落</p>
+<p class="no2">这个段落设置了内边距。</p>
+<hr>
+属性值 repeat 导致图像在水平垂直方向上都平铺，就像以往背景图像的通常做法一样。
+repeat-x 和 repeat-y 分别导致图像只在水平或垂直方向上重复，
+no-repeat 则不允许图像在任何方向上平铺。
+
+<div class="repeat-x" style="height: 500px;width: 1000px">repeat-x</div>
+<hr style="height: 30px">
+<div class="repeat-y" style="height: 500px;width: 1000px">repeat-y</div>
+<hr style="height: 30px">
+<div class="repeat-no" style="height: 500px;width: 1000px">no-repeat</div>
+<hr style="height: 30px">
+<div class="repeat" style="height: 500px;width: 1000px">repeat</div>
+</body>
+</html>

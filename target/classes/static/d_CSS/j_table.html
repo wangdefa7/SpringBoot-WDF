@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格</title>
+
+    <style type="text/css">
+        p { white-space: pre-wrap}
+    </style>
+</head>
+<body>
+
+<p>
+
+    text-align 和 vertical-align 属性设置表格中文本的对齐方式。
+    text-align 属性设置水平对齐方式，比如左对齐、右对齐或者居中：
+    td
+    {
+    text-align:right;
+    }
+
+    vertical-align 属性设置垂直对齐方式，比如顶部对齐、底部对齐或居中对齐：
+    td
+    {
+    height:50px;
+    vertical-align:bottom;
+    }
+</p>
+
+<p>
+    表格内边距
+    如需控制表格中内容与边框的距离，请为 td 和 th 元素设置 padding 属性：
+    td
+    {
+    padding:15px;
+    }
+
+    上、右、下、左的顺序分别设置各边的内边距，各边均可以使用不同的单位或百分比值：
+    h1 {padding: 10px 0.25em 2ex 20%;}
+
+    四个单独的属性，分别设置上、右、下、左内边距：
+    h1 {
+    padding-top: 10px;
+    padding-right: 0.25em;
+    padding-bottom: 2ex;
+    padding-left: 20%;
+    }
+</p>
+
+<p>
+    表格颜色
+    下面的例子设置边框的颜色，以及 th 元素的文本和背景颜色：
+    table, td, th
+    {
+    border:1px solid green;
+    }
+
+    th
+    {
+    background-color:green;
+    color:white;
+    }
+</p>
+
+<p>
+    边框：
+    把一幅图片的边框定义为 outset，使之看上去像是“凸起按钮”：
+    a:link img {border-style: outset;}
+    定义多种样式
+    您可以为一个边框定义多个样式，例如：
+    p.aside {border-style: solid dotted dashed double;}
+    上面这条规则为类名为 aside 的段落定义了四种边框样式：实线上边框、点线右边框、虚线下边框和一个双线左边框。
+
+    通过 border-width 属性为边框指定宽度。
+    为边框指定宽度有两种方法：可以指定长度值，比如 2px 或 0.1em；或者使用 3 个关键字之一，它们分别是 thin 、medium（默认值） 和 thick。
+
+    与上面的例子是等价的：
+    p {
+    border-style: solid;
+    border-top-width: 15px;
+    border-right-width: 5px;
+    border-bottom-width: 15px;
+    border-left-width: 5px;
+    }
+
+    取消边框：
+    p {border-style: none; border-width: 50px;}
+
+    忘记声明边框样式是一个常犯的错误。根据以下规则，所有 h1 元素都不会有任何边框，更不用说 20 像素宽了：
+    h1 {border-width: 20px;}
+    由于 border-style 的默认值是 none，如果没有声明样式，就相当于 border-style: none。因此，如果您希望边框出现，就必须声明一个边框样式。
+
+    边框的颜色
+    设置边框颜色非常简单。CSS 使用一个简单的 border-color 属性，它一次可以接受最多 4 个颜色值。
+    可以使用任何类型的颜色值，例如可以是命名颜色，也可以是十六进制和 RGB 值：
+    p {
+    border-style: solid;
+    border-color: blue rgb(25%,35%,45%) #909090 red;
+    }
+    如果颜色值小于 4 个，值复制就会起作用。例如下面的规则声明了段落的上下边框是蓝色，左右边框是红色：
+    p {
+    border-style: solid;
+    border-color: blue red;
+    }
+
+</p>
+</body>
+</html>

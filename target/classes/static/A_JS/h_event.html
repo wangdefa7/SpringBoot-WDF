@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <script>
+        /*
+        HTML 页面完成加载
+        HTML input 字段改变时
+        HTML 按钮被点击*/
+        /*
+        * <some-HTML-element some-event='JavaScript 代码'>
+        * */
+
+/*        条件运算符
+        variablename=(condition)?value1:value2
+        例子
+        实例
+        如果变量 age 中的值小于 18，则向变量 voteable 赋值 "年龄太小"，否则赋值 "年龄已达到"。
+       voteable=(age<18)?"年龄太小":"年龄已达到";*/
+
+
+    </script>
+</head>
+<body>
+<!--按钮元素中添加了 onclick 属性-->
+<button onclick="getElementById('demo').innerHTML=Date()">现在的时间是?</button>
+<!--代码将修改自身元素的内容 (使用 this.innerHTML)-->
+<button onclick="this.innerHTML=Date()">现在的时间是?</button>
+
+<div id="demo"></div>
+
+</body>
+<!--
+onchange	HTML 元素改变
+onclick	用户点击 HTML 元素
+onmouseover	用户在一个HTML元素上移动鼠标
+onmouseout	用户从一个HTML元素上移开鼠标
+onkeydown	用户按下键盘按键
+onload	浏览器已完成页面的加载-->
+</html>
