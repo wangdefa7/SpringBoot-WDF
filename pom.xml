@@ -108,6 +108,30 @@
             <artifactId>json</artifactId>
             <version>20180813</version>
         </dependency>
+        
+        <!-- fastjson -->
+        <dependency>
+        	<groupId>com.alibaba</groupId>
+        	<artifactId>fastjson</artifactId>
+        	<version>1.2.47</version>
+        </dependency>
+        
+        <!-- httpClient -->
+        <dependency>
+        	<groupId>org.apache.httpcomponents</groupId>
+        	<artifactId>httpclient</artifactId>
+        </dependency>
+        
+        <!-- junit -->
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+		<dependency>
+		    <groupId>org.junit.jupiter</groupId>
+		    <artifactId>junit-jupiter-api</artifactId>
+		    <version>5.5.2</version>
+		    <scope>test</scope>
+		</dependency>
+        
+        
 
     </dependencies>
 
