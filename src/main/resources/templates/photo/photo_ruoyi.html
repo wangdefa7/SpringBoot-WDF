@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script type="text/javascript" src="/webjars/jquery/3.1.1/jquery.js"></script>
-    <script type="text/javascript" src="/webjars/layui/2.5.6/layui.all.js"></script>
-    <script type="text/javascript" src="/webjars/layer/src/layer.js"></script>
+  <!--   <script type="text/javascript" src="/webjars/layui/2.5.6/layui.all.js"></script>
+    <script type="text/javascript" src="/webjars/layer/src/layer.js"></script> -->
     <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.css">
-    <script type="text/javascript" src="/cropbox/cropbox.js"></script>
-    <link rel="stylesheet" href="/cropbox/cropbox.css">
+    <script type="text/javascript" src="/js/crop/cropbox_ruoyi.js"></script>
+    <link rel="stylesheet" href="/css/crop/cropbox.css">
 
 </head>
 <body>
@@ -23,13 +23,13 @@
             <a href="javascript:void(0)" class="upload-img"> <label for="avatar">上传图像</label> </a>
             <input type="file" class="" name="avatar" id="avatar" accept="image/*"/>
         </div>
-        <input type="button" id="btnCrop" class="Btnsty_peyton" value="裁切" />
+        <input type="button" id="btnCrop" class="Btnsty_peyton" style="width:100px;" value="裁切" />
         <input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+" />
         <input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-" />
     </div>
     <div class="cropped"></div>
 </div>
-<input type="button" onclick="submitHandler()" class="Btnsty_peyton" value="裁切" />
+<input type="button" onclick="submitHandler()" class="Btnsty_peyton" value="上传" />
 <script type="text/javascript">
     var cropper;
    // .on("load",function(){
@@ -59,9 +59,10 @@
         $('#btnCrop').on('click', function(){
             var img = cropper.getDataURL();
             $('.cropped').html('');
-            $('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:64px;margin-top:4px;border-radius:64px;box-shadow:0px 0px 12px #7E7E7E;" ><p>64px*64px</p>');
+            /* $('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:64px;margin-top:4px;border-radius:64px;box-shadow:0px 0px 12px #7E7E7E;" ><p>64px*64px</p>');
             $('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:128px;margin-top:4px;border-radius:128px;box-shadow:0px 0px 12px #7E7E7E;"><p>128px*128px</p>');
-            $('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:180px;margin-top:4px;border-radius:180px;box-shadow:0px 0px 12px #7E7E7E;"><p>180px*180px</p>');
+            $('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:180px;margin-top:4px;border-radius:180px;box-shadow:0px 0px 12px #7E7E7E;"><p>180px*180px</p>'); */
+            $('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:200px;margin-top:4px;border-radius:180px;box-shadow:0px 0px 12px #7E7E7E;">');
         })
 
         $('#btnZoomIn').on('click', function(){
@@ -78,7 +79,7 @@
         var formdata = new FormData();
         formdata.append("file", img);
         $.ajax({
-            url: "/photo/uploadPhoto",
+            url: "/photo/uploadPhoto_ruoyi",
             data: formdata,
             type: "post",
             processData: false,

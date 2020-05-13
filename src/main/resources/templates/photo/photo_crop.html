@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Crop Box</title>
+    <link rel="stylesheet" href="/css/crop/style.css" type="text/css" />
+    <script src="/js/crop/cropbox.js"></script>
+    <script src="/js/jquery/jquery-3.4.1.js"></script>
+    <style>
+        .container
+        {
+            position: absolute;
+            top: 10%; left: 10%; right: 0; bottom: 0;
+        }
+        .action
+        {
+            width: 400px;
+            height: 30px;
+            margin: 10px 0;
+        }
+        .cropped>img
+        {
+            margin-right: 10px;
+        }
+    </style>
+    
+    <style>
+
+#parent{width:550px; height:10px; border:2px solid #09F;}
+#son {
+width:0;
+height:100%;
+border-radius:10px;
+background-color:#e94829;
+text-align:center;
+line-height:20px;
+font-size:15px;
+color:white;
+font-weight:bold;
+
+}
+
+</style>
+
+</head>
+<body>
+
+
+<div class="container">
+    <div class="imageBox">
+        <div class="thumbBox"></div>
+        <div class="spinner" style="display: none">Loading...</div>
+    </div>
+    <div class="action">
+        <input type="file" id="file" style="float:left; width: 250px">
+        <input type="button" id="btnCrop" value="裁剪" style="float: right">
+        <input type="button" id="btnZoomIn" value="+" style="float: right">
+        <input type="button" id="btnZoomOut" value="-" style="float: right">
+    </div>
+    <input type="file" id="file_up" value="file_up()">
+    <!-- <div class="grad" id="son"></div>进度条  -->
+    <div  class="cropped">
+
+    </div>
+    
+</div>
+<script type="text/javascript">
+    window.onload = function() {
+        var options =
+        {
+            imageBox: '.imageBox',
+            thumbBox: '.thumbBox',
+            spinner: '.spinner',
+            imgSrc: '/img/beautiful.jpg'
+        }
+        var cropper = new cropbox(options);
+        document.querySelector('#file').addEventListener('change', function(){
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                options.imgSrc = e.target.result;
+                cropper = new cropbox(options);
+            }
+            reader.readAsDataURL(this.files[0]);
+            this.files = [];
+        })
+        document.querySelector('#btnCrop').addEventListener('click', function(){
+            var img = cropper.getDataURL();
+            document.querySelector('.cropped').innerHTML += '<img id="photo_ok" src="'+img+'">';
+            var pic  = document.getElementById("photo_ok");
+            uploadFile(pic);//调佣上传方法。
+            
+        })
+        document.querySelector('#btnZoomIn').addEventListener('click', function(){
+            cropper.zoomIn();
+        })
+        document.querySelector('#btnZoomOut').addEventListener('click', function(){
+            cropper.zoomOut();
+        })
+    };
+    
+    function uploadFile(pics){
+    	  	//var pic = $("#pic").get(0).files[0];
+    	    var pic = $("#photo_ok").attr("src");
+    		console.log(pic);
+    	    var formData = new FormData();
+    	    formData.append("file" , pic);        
+    	    $.ajax({
+    	        type: "POST",
+    	        url: "/usersig/uploadSignaturePhoto",
+    	        data: formData ,
+    	        processData : false, //必须false才会自动加上正确的Content-Type
+    	        dataType: 'json',
+    	        contentType : false ,//必须false才会避开jQuery对 formdata 的默认处理 
+/*     	        xhr: function(){
+    	            var xhr = $.ajaxSettings.xhr();
+    	            if(onprogress && xhr.upload) {
+    	                xhr.upload.addEventListener("progress" , onprogress, false);
+    	                return xhr;
+    	            }
+    	        }, */
+    	        success: function(res) {
+    	            console.log(res);
+    				alert(res);
+    	            /* $("#versionsize").val(res.filesize);
+    	            $("#versionurl").val(res.url); */
+    	        }
+    	    });
+    	}  
+    	
+    	function file_up(){
+    		
+    		return ;
+    	}
+    	
+    	  /**   *  侦查附件上传情况  ,这个方法大概0.05-0.1秒执行一次   */
+    	function onprogress(evt){
+    	    var loaded = evt.loaded;         //已经上传大小情况
+    	    var tot = evt.total;           //附件总大小
+    	    var per = Math.floor(100*loaded/tot);   //已经上传的百分比
+    	    $("#son").html( per +"%" );
+    	    $("#son").css("width" , per +"%");
+    	}
+</script>
+
+</body>
+</html>

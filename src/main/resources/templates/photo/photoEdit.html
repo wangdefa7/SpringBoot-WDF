@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>处理照片</title>
+</head>
+<body>
+
+<label class="ui_button ui_button_primary" for="xFile">上传文件</label>
+<form>
+    <input type="file" id="uploadFile" style="position:absolute;clip:rect(0 0 0 0);">
+</form> 
+<img id="imgCover" src="./watermark.png" class="clip"> //水印小照片
+<p id="compounded"></p> //合成后的照片 
+<script type="text/javascript">
+var eleUploadFile = document.getElementById('uploadFile'); 
+var compounded = document.getElementById('compounded');
+eleUploadFile.addEventListener('change', function (event) { 
+    var file = event.target.files[0]; //获取图片资源 
+    if (!event.type.match('image.*')) {// 只选择图片文件 
+        return false; 
+    } 
+    var reader = new FileReader(); 
+    reader.readAsDataURL(file); // 读取文件 exif(file); //旋转图片 reader.onloadend=function(e){ //文件读取结束 
+        var base64 = e.target.result; 
+        if (base64.length > 1024 * 50) { 
+            console.error('图片尺寸请小于50K'); 
+            return; 
+        } 
+        var compressImg = compress(base64); //压缩函数 
+        var compoundImg = compoundImg(base64,function(url){ 
+            var size = 180 / (window.devicePixelRatio || 1); 
+            compounded.innerHTML = '<img src="'+ url +'" width="'+ size +'" height="'+ size +'">'; 
+        }) 
+    } 
+})
+
+</script>
+
+</body>
+</html>
