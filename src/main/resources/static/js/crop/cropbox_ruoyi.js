@@ -14,26 +14,30 @@
                 ratio : 1,
                 options : options,
                 imageBox : el,
-                thumbBox : el.find(options.thumbBox),
-                spinner : el.find(options.spinner),
+                thumbBox : el.find(options.thumbBox), /*小图*/
+                spinner : el.find(options.spinner), /*大图*/
                 image : new Image(),
                 getDataURL: function ()
                 {
-                    var width = this.thumbBox.width(),
+                    var width = this.thumbBox.width(),/*小图*/
                         height = this.thumbBox.height(),
                         canvas = document.createElement("canvas"),
-                        dim = el.css('background-position').split(' '),
+                        dim = el.css('background-position').split(' '),/*大图*/
                         size = el.css('background-size').split(' '),
-                        dx = parseInt(dim[0]) - el.width()/2 + width/2,
-                        dy = parseInt(dim[1]) - el.height()/2 + height/2,
+                        dx = parseInt(dim[0]) - el.width()/2 + width,
+                        dy = parseInt(dim[1]) - el.height()/2 + height*2,
                         dw = parseInt(size[0]),
                         dh = parseInt(size[1]),
                         sh = parseInt(this.image.height),
                         sw = parseInt(this.image.width);
-
+                    console.log("parseInt(dim[0]) "+parseInt(dim[0]));
+                    console.log("el.width()/2  "+el.width()/2);
+                    console.log("width/2   "+width/2);
+                    console.log("dx"+dx);
                     canvas.width = width;
                     canvas.height = height;
                     var context = canvas.getContext("2d");
+                    /*context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);*/																
                     context.drawImage(this.image, 0, 0, sw, sh, dx, dy, dw, dh);
                     var imageData = canvas.toDataURL('image/png');
                     return imageData;
