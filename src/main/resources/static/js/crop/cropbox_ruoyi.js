@@ -1,4 +1,8 @@
 "use strict";
+/* 上传图片裁剪
+author:wdf
+time: 2020/5/15
+*/
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], factory);
@@ -24,8 +28,8 @@
                         canvas = document.createElement("canvas"),
                         dim = el.css('background-position').split(' '),/*大图*/
                         size = el.css('background-size').split(' '),
-                        dx = parseInt(dim[0]) - el.width()/2 + width,
-                        dy = parseInt(dim[1]) - el.height()/2 + height*2,
+                        dx = parseInt(dim[0]) - el.width()/2 + width/2,
+                        dy = parseInt(dim[1]) - el.height()/2 + height/2,
                         dw = parseInt(size[0]),
                         dh = parseInt(size[1]),
                         sh = parseInt(this.image.height),
