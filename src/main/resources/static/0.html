@@ -2,40 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>汇总JS学习总结目录</title>
+    <title>汇总学习笔记 — WDF</title>
+
+    <script type="text/javascript" src="/webjars/jquery/3.1.1/jquery.js"></script>
+    <script type="text/javascript" src="/webjars/layui/2.5.6/layui.all.js"></script>
+    <script type="text/javascript" src="/webjars/layer/src/layer.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="css/wdf/a.css">
+    <audio src="music/backgroud.mp3"  autoplay="autoplay"> </audio>
+
 </head>
 <body>
-<h4>
-<a href="e_JQuery/0_jquery.html">Jquery操作</a>
-<a href="/bootstrap/tablePage">进入bootstrap</a> 
-<a href="/ztree/ztreePage">进入ztreePage</a> 
-<a href="/freemaker/page">进入freemaker</a> 
-<a href="/layui/layuiPage">进入layui+webjars</a> 
-</h4>
+<video autoplay loop muted style="width: 100%" id="mov1"><!-- autoplay:自动播放 loop:循环  muted: 不需要声音-->
+    <source src="mov/background.mp4">
+</video>
+<div class="page-header">
+    <h1 style="color: #00B83F">汇总学习笔记 <small style="color: #4db8ad">Not good enough to have </small></h1>
+</div>
+<p class="p-git-location">
+    <a class="btn btn-success btn-lg" role="button" href="https://github.com/wangdefa7/SpringBoot-Page">项目源码地址—Git</a>
+</p>
+<p>
+    <a  class="btn btn-info" href="A_JS/0_JS.html">JS操作</a>
+    <a  class="btn btn-info" href="B_HTML/0_HTML.html">html操作</a>
+    <a  class="btn btn-info" href="C_html5/0_HTML5.html">html5操作</a>
+    <a  class="btn btn-info" href="d_CSS/0_CSS.html">css操作</a>
+    <a  class="btn btn-info" href="e_JQuery/0_jquery.html">Jquery操作</a>
+    <a class="btn btn-info" href="/bootstrap/tablePage">进入bootstrap</a>
+    <a class="btn btn-info" href="/ztree/ztreePage">进入ztreePage</a>
+    <a class="btn btn-info" href="/freemaker/page">进入freemaker</a>
+    <a class="btn btn-info" href="/layui/layuiPage">进入layui+webjars</a>
+</p>
 <br>
-<h5>
-<a href ="/photo/1">图片操作</a>
-<a href = "/photo/openPhotoPage_ruoyi">图片——若依</a>
-</h5>
+<p>
+<a class="btn btn-danger" href ="/photo/1">图片操作</a>
+<a class="btn btn-danger" href = "/photo/openPhotoPage_ruoyi">图片——若依</a>
+</p>
 <br>
-<a href="A_JS/a_getBy.html">获取元素</a>
-<a href="A_JS/b_function.html">function方法</a>
-<a href="A_JS/c_var.html">变量</a>
-<a href="A_JS/d_char.html">字符串</a>
-<a href="A_JS/e_choose.html">选择条件</a>
-<a href="A_JS/f_date.html">日期的处理</a>
-<a href="A_JS/g_Regular Expression.html">正则表达式</a>
-<a href="A_JS/h_event.html">事件处理</a>
-<a href="A_JS/i_try catch.html">异常处理</a>
-<a href="A_JS/j_debug.html">debug调试</a>
-<a href="A_JS/k_strict mode.html">严格模式</a>
-<a href="A_JS/l_form.html">表单处理</a>
-<a href="A_JS/m_keyword.html">关键字</a>
-<a href="A_JS/o_json.html">Json</a>
-<a href="A_JS/p_src.html">导入文件处理</a>
-<a href="A_JS/q_bibao.html">闭包 计数器</a>
-<a href="A_JS/r_css.html">css处理</a>
+<div class="bottom-index-div" >
+    <h1 style="margin-left: 20px">I will be as excellent as you!</h1>
+    <p style="margin-left: 20px;">更多内容详见源码: <br>json数据，Webservice,java集合、多态、enum、IO流、HTTP请求、继承、实现类、String、多线程等</p>
+</div>
 
 
+<script type="text/javascript">
+    var video= document.getElementById('mov1');
+    video.playbackRate = 1;//设置播放速度 可设为0.5
+
+</script>
 </body>
 </html>
