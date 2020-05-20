@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>时间处理</title>
+</head>
+<body>
+<br>
+<input id="format-id" style="width:200px;line-size:50px" value="yyyy-MM-dd hh:mm:ss" onchange="formatDate()">
+<br>
+<h4><a id="date-id"></a></h4>
+<hr>
+<p>
+yyyy-MM-dd hh:mm:ss
+</p>
+<p>
+
+y  年  Year  1996; 96  <br>
+M  年中的月份  Month  July; Jul; 07  <br>
+w  年中的周数  Number  27  <br>
+W  月份中的周数  Number  2  <br>
+D  年中的天数  Number  189  <br>
+d  月份中的天数  Number  10  <br>
+F  月份中的星期  Number  2  <br>
+E  星期中的天数  Text  Tuesday; Tue  <br>
+a  Am/pm 标记  Text  PM  <br>
+H  一天中的小时数（0-23）  Number  0  <br>
+k  一天中的小时数（1-24）  Number  24  <br>
+K  am/pm 中的小时数（0-11）  Number  0  <br>
+h  am/pm 中的小时数（1-12）  Number  12  <br>
+m  小时中的分钟数  Number  30  <br>
+s  分钟中的秒数  Number  55  <br>
+S  毫秒数  Number  978  <br>
+z  时区  General time zone  Pacific Standard Time; PST; GMT-08:00  <br>
+Z  时区  RFC 822 time zone  -0800  <br>
+</p>
+
+<script type="text/javascript">
+
+window.onload = function(){ 
+	formatDate();
+} 
+
+function formatDate(){
+	var date = new Date(); 
+	var dateFormat = document.getElementById("date-id");
+	var format = document.getElementById("format-id").value;
+	console.log(format)
+	var jlcjsj = date.format(format);
+	dateFormat.innerHTML=jlcjsj;
+}
+
+Date.prototype.format = function (fmt) {
+    var o = {
+        "M+": this.getMonth() + 1, //月份
+        "d+": this.getDate(), //日
+        "h+": this.getHours(), //小时
+        "m+": this.getMinutes(), //分
+        "s+": this.getSeconds(), //秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+        "S": this.getMilliseconds() //毫秒
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+}
+  
+
+</script>
+</body>
+</html>
