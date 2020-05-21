@@ -10,13 +10,17 @@ public class BufferTest {
     public static void main(String[] args) {
         try {
             //创建内容
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("E:\\test.txt"));
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("E:\\test-buffer.txt"));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("E:\\test.txt"));//从文件中读入数据
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("E:\\test-buffer.txt"));//写入数据到文件
             //如果一个文件还没有被操作，就被另一个占用了。则读不到东西
 
+            String line = "";
             //读入内容
-            System.out.println(bufferedReader.readLine());
-            bufferedWriter.write("bufferwriter");
+            while ((line = bufferedReader.readLine())!=null) {
+            	System.out.println(line);//一个realine只能读取一行数据
+                bufferedWriter.write(line);
+			}
+            
             bufferedReader.close();
             bufferedWriter.close();
 
