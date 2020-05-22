@@ -7,6 +7,8 @@
     <script type="text/javascript" src="/webjars/jquery/3.1.1/jquery.js"></script>
     <script type="text/javascript" src="/webjars/layui/2.5.6/layui.all.js"></script>
     <script type="text/javascript" src="/webjars/layer/src/layer.js"></script>
+    <!-- 获取位置 -->
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
     <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.css">
     <link rel="stylesheet" href="css/wdf/a.css">
     <audio src="music/backgroud.mp3"  loop="loop" autoplay="autoplay"> </audio>
@@ -50,7 +52,22 @@
 <script type="text/javascript">
     var video= document.getElementById('mov1');
     video.playbackRate = 1;//设置播放速度 可设为0.5
-
+    //console.log(returnCitySN["cip"]+','+returnCitySN["cname"])  
+    var ip = returnCitySN["cip"];
+	var city = returnCitySN["cname"];
+    $(function(){
+    	$.ajax({
+    		url:"/address?ip="+ip+"&city="+city,
+    		type:"get",
+    		success:function(data){
+    			console.log("服务器服务成功："+data);
+    		},
+    		error:function(){
+    			alert("您的浏览器好强大，我竟然获取不到你的IP地址！   @'_'@   ");
+    		}
+    	});
+    })
+  
 </script>
 </body>
 </html>
