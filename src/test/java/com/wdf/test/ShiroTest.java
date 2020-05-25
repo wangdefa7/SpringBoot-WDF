@@ -32,7 +32,7 @@ public class ShiroTest {
      * @Description: 测试shiro权限
      * @date: 2020年5月22日 上午10:49:20
      */
-    @Test
+   // @Test
     public void testHelloworld() {
     	String relativelyPath=System.getProperty("user.dir")+"/src/main/resources/static/";
     	String shiroPathString = relativelyPath+"/shiro/shiro.ini";
