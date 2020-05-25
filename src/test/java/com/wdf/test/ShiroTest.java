@@ -1,15 +1,5 @@
 package com.wdf.test;
 
-import java.io.File;
-import java.net.URL;
-
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.config.IniSecurityManagerFactory;
-import org.apache.shiro.subject.Subject;
-import org.apache.shiro.util.Factory;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -23,7 +13,10 @@ import org.junit.jupiter.api.Test;
  */
 public class ShiroTest {
 
-	
+	@Test
+	void test() {
+		System.out.println("环境测试");
+	}
 	 
     /**
      * 
@@ -32,7 +25,7 @@ public class ShiroTest {
      * @Description: 测试shiro权限
      * @date: 2020年5月22日 上午10:49:20
      */
-   // @Test
+/*    @Test
     public void testHelloworld() {
     	String relativelyPath=System.getProperty("user.dir")+"/src/main/resources/static/";
     	String shiroPathString = relativelyPath+"/shiro/shiro.ini";
@@ -57,6 +50,6 @@ public class ShiroTest {
         Assert.assertEquals(true, subject.isAuthenticated()); //断言用户已经登录
         //6、退出
         subject.logout();
-    }
+    }*/
 
 }
