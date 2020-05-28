@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<button id="btn"  onclick="demo2()">单击这里</button>
+<script type="text/javascript">
+	function demo1(){
+	    var m=5;
+	    return m;
+	}
+ 	function demo2(){
+		var m=55;
+		console.log("------")
+		//alert(m);
+		return m;
+	} 
+	var a=demo1;//a是整个函数体，是一个函数对象
+	var b=demo1();//b是函数执行后返回的值5
+	console.log("demo1    "+a)
+	console.log("demo1()  "+b)
+	console.log("function")
+	console.log("demo1    "+demo1)
+	console.log("demo1()  "+demo1())
+/* 	alert(demo1);
+	alert(demo1()); */
+	
+ 	var e=document.getElementById("btn");
+	//e.addEventListener("click",demo2);
+	//e.addEventListener("click",demo2());  
+</script>
+</body>
+</html>
