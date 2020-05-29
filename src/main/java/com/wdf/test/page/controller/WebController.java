@@ -8,7 +8,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
-
+/**
+ * 
+ * @Package: com.wdf.test.page.controller
+ * @ClassName: WebController
+ * @Description: 
+ * @author: WDF
+ * @date: 2020年5月29日 上午10:53:34
+ * @version: V1.0
+ */
 @Controller
 public class WebController {
 	
