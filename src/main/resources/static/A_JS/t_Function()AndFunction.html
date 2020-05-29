@@ -7,6 +7,17 @@
 <body>
 <button id="btn"  onclick="demo2()">单击这里</button>
 <script type="text/javascript">
+	//这里定义的function a 也可以被其他函数调用
+ 	window.onload=function a(){
+	    console.info(123)
+	}; 
+
+	
+/* 	window.onload = demo1
+	window.onload = demo1()
+	这两个函数执行的区别，第一个会把deme1代码作为DO加载完之后采取执行，是一个真正意义上面的符合onload的函数。
+	第二个函数与onload无任何关系，单纯是函数到这里的时候调用了该函数。
+ */
 	function demo1(){
 	    var m=5;
 	    return m;
@@ -30,6 +41,7 @@
  	var e=document.getElementById("btn");
 	//e.addEventListener("click",demo2);
 	//e.addEventListener("click",demo2());  
+	
 </script>
 </body>
 </html>

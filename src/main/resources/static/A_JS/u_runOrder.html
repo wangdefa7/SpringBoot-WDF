@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>js执行顺序</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    function Hello() {
+        alert("Hello");
+    }
+    Hello();
+    function Hello() {
+        alert("Hello World");
+    }
+    Hello(); 
+
+    /*
+   Javascript并非完全的按顺序解释执行，而是在解释之前会对Javascript进行一次“预编译”，在预编译的过程中，会把定义式的函数优先执行，也会把所有var变量创建，默认值为undefined，以提高程序的执行效率。
+也就是说上面的一段代码其实被JS引擎预编译为这样的形式：
+复制代码代码如下:
+
+<scripttype="text/javascript">        
+varHello = function() {           
+alert("Hello");        
+}       
+Hello = function() { 
+           alert("Hello World");  
+      }      
+Hello();     
+Hello();  
+< /script> 
+
+我们可以通过上面的代码很清晰地看到，其实函数也是数据，也是变量，我们也可以对“函数“进行赋值（重赋值）。
+    */
+
+    var a =5;
+    console.log(a)
+    var a =6;
+    console.log(a)
+    /*
+    因为，变量初始化过程发生在执行期，而不是预编译期。在执行期，JavaScript解释器是按着代码先后顺序进行解析的
+    */
+    </script>
+</body>
+
+</html>
