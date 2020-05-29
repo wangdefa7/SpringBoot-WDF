@@ -1,8 +1,5 @@
 package com.wdf.test.page.controller;
 
-import java.io.ObjectOutputStream.PutField;
-
-import org.apache.http.HttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -26,7 +23,7 @@ public class WebController {
     @RequestMapping("/address")
     @ResponseBody
     public String address(@RequestParam("ip") String ip, @RequestParam("city") String city) {
-    	System.out.println("用户"+ip+"在 "+city +" 访问了这个网站");
+    	System.out.println("用户["+ip+"] 在  ["+city +"] 访问了这个网站");
     	logger.info("用户[{}] 在 [{}] 访问了这个网站",ip,city);
     	JSONObject jsonObject = new JSONObject();
     	jsonObject.put("ip", ip);
