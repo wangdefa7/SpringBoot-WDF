@@ -44,7 +44,7 @@ public class Select2TestController {
     @ResponseBody
     @RequestMapping("/select2data2")
     public List<Select2Entity> select2data2(@RequestParam String search,@RequestParam String site){
-        log.info("前端返的值：{}{}"+search+site);
+        log.info("前端返的值：{}{}",search,site);
         List<Select2Entity> list = new LinkedList<>();
         Select2Entity s ;
         for (int i = 1;i < 5;i++){
