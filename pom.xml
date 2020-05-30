@@ -144,7 +144,13 @@
 	        <artifactId>shiro-core</artifactId>
 	        <version>1.2.2</version>
 	    </dependency>
-		
+
+        <!--shiro与spring整合-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>RELEASE</version>
+        </dependency>
     </dependencies>
 
     <build>

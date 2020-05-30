@@ -19,23 +19,39 @@ import com.alibaba.fastjson.JSONObject;
  */
 @Controller
 public class WebController {
-	
-	Logger logger = LoggerFactory.getLogger(WebController.class);
+
+    Logger logger = LoggerFactory.getLogger(WebController.class);
 
     @RequestMapping("/")
-    public String index(){
-    	logger.info("访问了首页");
+    public String index() {
+        logger.info("访问了首页");
         return "redirect:/0.html";
     }
-    
+
     @RequestMapping("/address")
     @ResponseBody
     public String address(@RequestParam("ip") String ip, @RequestParam("city") String city) {
-    	System.out.println("用户["+ip+"] 在  ["+city +"] 访问了这个网站");
-    	logger.info("用户[{}] 在 [{}] 访问了这个网站",ip,city);
-    	JSONObject jsonObject = new JSONObject();
-    	jsonObject.put("ip", ip);
-    	jsonObject.put("city", city);
-    	return jsonObject.toJSONString();
+        System.out.println("用户[" + ip + "] 在  [" + city + "] 访问了这个网站");
+        logger.info("用户[{}] 在 [{}] 访问了这个网站", ip, city);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("ip", ip);
+        jsonObject.put("city", city);
+        return jsonObject.toJSONString();
+    }
+
+    /**
+     * 测试shiro
+     * @return
+     */
+    @RequestMapping("/shiro")
+    public String shiro() {
+        logger.info("测试shiro的权限控制，这是一个无权限的测试页面");
+        return "/shiro/shiroAuthc";
+    }
+
+    @RequestMapping("/login")
+    public String login() {
+        logger.info("测试shiro的权限控制:这是一个无权限的测试页面后跳转到的 [登录页面]");
+        return "login";
     }
 }
