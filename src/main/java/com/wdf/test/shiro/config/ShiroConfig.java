@@ -39,8 +39,8 @@ public class ShiroConfig {
         //将配置好的权限map放入shiro的过滤器中去
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
         //设置没有权限后跳转到指定的页面
-        shiroFilterFactoryBean.setLoginUrl("/login");
-
+        shiroFilterFactoryBean.setLoginUrl("/loginPage");
+        //shiroFilterFactoryBean.setLoginUrl("/login");
         return  shiroFilterFactoryBean;
     }
 

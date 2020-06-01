@@ -39,19 +39,5 @@ public class WebController {
         return jsonObject.toJSONString();
     }
 
-    /**
-     * 测试shiro
-     * @return
-     */
-    @RequestMapping("/shiro")
-    public String shiro() {
-        logger.info("测试shiro的权限控制，这是一个无权限的测试页面");
-        return "/shiro/shiroAuthc";
-    }
-
-    @RequestMapping("/login")
-    public String login() {
-        logger.info("测试shiro的权限控制:这是一个无权限的测试页面后跳转到的 [登录页面]");
-        return "login";
-    }
+   
 }
