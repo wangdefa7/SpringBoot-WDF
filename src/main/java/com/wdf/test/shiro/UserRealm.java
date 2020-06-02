@@ -1,7 +1,5 @@
 package com.wdf.test.shiro;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

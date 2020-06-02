@@ -1,7 +1,5 @@
 package com.wdf.test.javabasic.exception;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
 /**
  * 
  * @Package: com.wdf.test.javabasic.exception

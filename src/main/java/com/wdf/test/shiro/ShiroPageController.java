@@ -65,20 +65,20 @@ public class ShiroPageController {
         	 */
 			subject.login(token);
 			System.out.println("登录成功");
-			model.addAttribute("msg", "登陆成功");
+			model.addAttribute("msg", "我是后台返回的数据，你已经登陆成功了");
 			return "/shiro/shiroLoginSuccess";
 		} catch (UnknownAccountException e) {
 			// 登录失败，用户不存在
 			e.printStackTrace();
 			logger.error("登录失败，用户不存在");
 			model.addAttribute("msg", "登录失败，用户不存在");
-			return "/loginPage";
+			return "/login";
 		}catch (IncorrectCredentialsException e) {
 			// 登录失败，密码错误
 			e.printStackTrace();
 			logger.error("登录失败，密码错误");
 			model.addAttribute("msg", "登录失败，密码错误");
-			return "/loginPage";
+			return "/login";
 		}
     }
     
