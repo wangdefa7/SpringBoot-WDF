@@ -2,8 +2,13 @@ package com.wdf.test.shiro.config;
 
 
 import com.wdf.test.shiro.UserRealm;
+
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
+
+import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,15 +39,19 @@ public class ShiroConfig {
         //将权限的过滤器配置放到一个Map当中
         Map<String,String> filterMap = new LinkedHashMap<>();
         filterMap.put("/shiro","authc");//权限访问页面
+        filterMap.put("/AuthTest", "perms[user:AuthTest]");//没有权限的认证访问,会跳转到未授权页面
 
 
         //将配置好的权限map放入shiro的过滤器中去
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
         //设置没有权限后跳转到指定的页面
         shiroFilterFactoryBean.setLoginUrl("/loginPage");
+        //没有被授权
+        shiroFilterFactoryBean.setUnauthorizedUrl("/unAuth");
         //shiroFilterFactoryBean.setLoginUrl("/login");
         return  shiroFilterFactoryBean;
     }
+    
 
     /**
      * shiro的安全管理器。连接到realm和用户主体Subject。
@@ -62,5 +71,42 @@ public class ShiroConfig {
     public UserRealm userRealm(){
         return  new UserRealm();
     }
+    
+    /**
+     * 
+     * @Title: getShiroDialect
+     * @author: WDF
+     * @Description: shiro与thymeleaf整合的配置方法
+     * @date: 2020年6月3日 下午1:10:20
+     * @return
+     */
+    @Bean
+    public ShiroDialect getShiroDialect() {
+    	return new ShiroDialect();
+    }
+
+    
+    /**
+     * 
+     * @Title: getDefaultAdvisorAutoProxyCreator
+     * @author: WDF
+     * @Description: 固定方法，直接复制即可。用于控制注解权限一定生效
+     * @date: 2020年6月3日 下午3:12:43
+     * @return
+     */
+/*    @Bean
+    public static DefaultAdvisorAutoProxyCreator getDefaultAdvisorAutoProxyCreator(){
+        DefaultAdvisorAutoProxyCreator creator = new DefaultAdvisorAutoProxyCreator();
+        creator.setUsePrefix(true);
+        return creator;
+    }
+    
+  //加入注解的使用，不加入这个注解不生效
+    @Bean
+    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(org.apache.shiro.mgt.SecurityManager securityManager) {
+        AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
+        authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
+        return authorizationAttributeSourceAdvisor;
+    }*/
 
 }

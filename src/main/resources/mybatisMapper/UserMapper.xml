@@ -12,8 +12,12 @@
         select * from user where name = #{name}
     </select>
     
-        <select id="select" resultType="com.wdf.test.sql.mybatis.domain.User">
+    <select id="select" resultType="com.wdf.test.sql.mybatis.domain.User">
         select * from user 
+    </select>
+    
+    <select id="selectPerms" parameterType="String" resultType="String" >
+    	select perms from user where id = #{id}
     </select>
  
 </mapper>

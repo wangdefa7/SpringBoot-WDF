@@ -1,15 +1,19 @@
 package com.wdf.test.shiro;
 
-import static org.hamcrest.CoreMatchers.nullValue;
+import java.security.Security;
+import java.util.List;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wdf.test.sql.mybatis.domain.User;
@@ -23,15 +27,25 @@ public class UserRealm extends AuthorizingRealm {
 	@Autowired
 	private UserMapper userMapper;
 
-    /***
+    /**
      * 授权逻辑
-     * @param principals
-     * @return
+     * 进行对用户的授权操作
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         System.out.println("授权方法执行");
-        return null;
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        
+        //进行用户的授权
+        //info.addStringPermission("user:AuthTest");
+        Subject subject = SecurityUtils.getSubject();
+        User user = (User)subject.getPrincipal();
+        List<String> list = userMapper.selectPerms(user.getId());
+        if (list.size()>0) {
+        	info.addStringPermissions(list);
+		}
+        System.out.println("授权结束.....");
+        return info;
     }
 
 	@Override
@@ -47,7 +61,11 @@ public class UserRealm extends AuthorizingRealm {
 			System.out.println("输入账号的信息："+user2.toString());;
 		}
         
-		return new SimpleAuthenticationInfo("",user2.getPassword(),"");
+        /**
+         * 第一个参数是传入的用户的用户信息，通过Subject可以取出来
+         * 第二个参数是验证密码是否一致
+         */
+		return new SimpleAuthenticationInfo(user2,user2.getPassword(),"");
 	}
 
     /***

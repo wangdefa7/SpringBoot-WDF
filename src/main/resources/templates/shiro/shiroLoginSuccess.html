@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> 
 <head>
-    <meta charset="UTF-8">
-    <title>shiro权限测试登陆成功页面</title>
+<meta charset="UTF-8">
+<title>shiro权限测试登陆成功页面</title>
 </head>
 <body>
-<h1 style="color:green">${msg!''}</h1>
+	
+	测试thymeleaf的值(freemarker的优先级高于thymeleaf,所以页面上的元素 th 标签都已经失效了)：
+		<h1 style="color: green" th:text="${msg}"></h1>
+	<br>
+	测试freemarker的值：
+	<h1 style="color: green">${msg!''}</h1>
+
+	<br>
+<!-- 	<a href="/AuthTest">授权测试</a> -->
+	<span>如果没有权限则不显示“授权测试”按钮</span>
+	<br>
+	<@shiro.hasPermission name="user:userAuthTest">
+		<span >wdf,你居然有看到我的权限了！！！</span><br>
+		<a href="/AuthTest"><i style="color:green"> 授权测试  user:userAuthTest</i></a>
+	</@shiro.hasPermission>
+	<br>
+	<@shiro.hasPermission name="user:userAuthTestNo">
+		<span >wdf1,你居然有看到我的权限了！！！</span><br>
+		<a href="/AuthTest"><i style="color:red"> 授权测试  user:userAuthTestNo</i></a>
+	</@shiro.hasPermission>
+	
+	<hr>
+	thymeleaf权限测试。
+	<div shiro:hasPermission="user:AuthTest">
+		<span >wdf1,你居然有看到我的权限了！！！</span><br>
+		<a href="/AuthTest"><i style="color:green"> 授权测试  user:userAuthTest</i></a>
+	</div>
+	<div shiro:hasPermission="user:AuthTestNo">
+		<span >wdf,你居然有看到我的权限了！！！</span><br>
+		<a href="/AuthTest"><i style="color:red"> 授权测试  user:userAuthTestNo</i></a>
+	</div>
 </body>
 </html>

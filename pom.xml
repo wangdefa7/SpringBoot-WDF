@@ -163,6 +163,41 @@
             <version>RELEASE</version>
         </dependency>
         
+        <!-- thymeleaf模板引擎引入 -->
+<!--         <dependency>
+		    <groupId>org.thymeleaf</groupId>
+		    <artifactId>thymeleaf</artifactId>
+		</dependency> -->
+		<dependency> 
+		     <groupId>org.springframework.boot</groupId> 
+		     <artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+        
+        <!-- shiro与thymeleaf整合 -->
+        <dependency>
+		    <groupId>com.github.theborakompanioni</groupId>
+		    <artifactId>thymeleaf-extras-shiro</artifactId>
+		    <version>2.0.0</version>
+		</dependency>
+		
+		<!-- shiro-freemarker-tags start -->
+		<dependency>
+		    <groupId>net.mingsoft</groupId>
+		    <artifactId>shiro-freemarker-tags</artifactId>
+		    <version>1.0.0</version>
+<!-- 		    <exclusions>
+		        <exclusion>
+		            <groupId>org.apache.shiro</groupId>
+		            <artifactId>shiro-all</artifactId>
+		        </exclusion>
+		        <exclusion>
+		            <groupId>org.freemarker</groupId>
+		            <artifactId>freemarker</artifactId>
+		        </exclusion>
+		    </exclusions> -->
+		</dependency>
+		<!-- shiro-freemarker-tags end -->
+        
         <!-- mybatis -->        
         <dependency>
 		    <groupId>org.mybatis.spring.boot</groupId>

@@ -26,4 +26,15 @@ public interface UserMapper {
 	public int update(User user);
 	
 	public int delete(User user);
+	
+	/**
+	 * 
+	 * @Title: selectPerms
+	 * @author: WDF
+	 * @Description: 查询权限
+	 * @date: 2020年6月3日 上午11:29:12
+	 * @param id
+	 * @return
+	 */
+	public List<String> selectPerms(String id);
 }
