@@ -1,7 +1,9 @@
 package com.wdf.test.sql.mybatis.mapper;
 
 import java.util.List;
-import org.springframework.stereotype.Repository;
+
+import org.apache.ibatis.annotations.Mapper;
+
 import com.wdf.test.sql.mybatis.domain.User;
 /**
  * 
@@ -12,7 +14,7 @@ import com.wdf.test.sql.mybatis.domain.User;
  * @date: 2020年6月2日 下午4:12:08
  * @version: V1.0
  */
-@Repository
+@Mapper
 public interface UserMapper {
 
 	public List<User> Select();
