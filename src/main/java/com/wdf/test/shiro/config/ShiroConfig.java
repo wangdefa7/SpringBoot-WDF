@@ -1,25 +1,27 @@
 package com.wdf.test.shiro.config;
 
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Import;
+
 import com.wdf.test.shiro.UserRealm;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
-
-import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
-import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
-import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 /**
  * shiro 权限控制的配置
  */
 @Configuration
+@Import(ShiroManager.class)
 public class ShiroConfig {
 
     /**
@@ -33,6 +35,7 @@ public class ShiroConfig {
      * @return
      */
     @Bean
+    @ConditionalOnMissingBean
     public ShiroFilterFactoryBean shiroFilterFactoryBean(@Qualifier("defaultWebSecurityManager")DefaultWebSecurityManager defaultWebSecurityManager){
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(defaultWebSecurityManager);
@@ -68,6 +71,8 @@ public class ShiroConfig {
 
     //注入Realm数据的资源 ，关联到安全管理器SecurityManager
     @Bean("userRealm")
+    @DependsOn("lifecycleBeanPostProcessor")
+    @ConditionalOnMissingBean
     public UserRealm userRealm(){
         return  new UserRealm();
     }

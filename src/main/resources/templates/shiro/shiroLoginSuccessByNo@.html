@@ -19,15 +19,15 @@
 	<br>
 	<hr>
 	freemerker权限测试。 
-	<@shiro.hasPermission name="user:AuthTest">
+	<#if shiro.hasPermission('user:AuthTest')>
 		<span >wdf1,你居然有看到我的权限了！！！</span><br>
 		<a href="/AuthTest"><i style="color:green"> 授权测试  user:userAuthTest</i></a>
-	</@shiro.hasPermission>
-		<@shiro.hasPermission name="user:AuthTestNo">
+	</#if>
+	
+	<#if shiro.hasPermission('user:AuthTestNo')>
 		<span >wdf,你居然有看到我的权限了！！！</span><br>
-		<a href="/AuthTest"><i style="color:red"> 授权测试  user:userAuthTest</i></a>
-	</@shiro.hasPermission>
-
+		<a href="/AuthTest"><i style="color:red"> 授权测试  user:userAuthTestNo</i></a>
+	</#if>
 	
 	<p style="height:150px">
 	
@@ -42,6 +42,11 @@
 		<a href="/AuthTest"><i style="color:red"> 授权测试  user:userAuthTestNo</i></a>
 	</div>
 <script type="text/javascript">
+	window.onload=function(){
+		console.log("测试权限的值为：")
+		var a = ${shiro.hasPermission('user:AuthTest')?c};
+		console.log(a)
+	}
 
 </script>
 </body>
