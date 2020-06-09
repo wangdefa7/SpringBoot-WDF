@@ -4,6 +4,7 @@ import com.wdf.test.page.select2.model.Select2Entity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,8 +18,9 @@ public class Select2TestController {
     Logger log = LoggerFactory.getLogger(Select2TestController.class);
 
     @GetMapping("/select2")
-    public String select(){
+    public String select(Model model){
         log.info("进入select2页面");
+        model.addAttribute("msg", "测试默认值");
         return "select2/select2";
     }
 
