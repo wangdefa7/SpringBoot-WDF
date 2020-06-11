@@ -34,4 +34,14 @@ public class EchartsPageController {
         logger.info("openEchartsDemo....");
         return "/echarts/demo1";
     }
+
+    /**
+     * 测试demo2
+     * @return
+     */
+    @RequestMapping("demo2")
+    public String openEchartsDemo2(){
+        logger.info("openEchartsDemo2....");
+        return "/echarts/demo2-PageButton";
+    }
 }
