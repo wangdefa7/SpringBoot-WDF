@@ -44,4 +44,14 @@ public class EchartsPageController {
         logger.info("openEchartsDemo2....");
         return "/echarts/demo2-PageButton";
     }
+
+    /**
+     * 首页图标
+     * @return
+     */
+    @RequestMapping("indexEchrts")
+    public String indexEchrts(){
+        logger.info("openEchartsindexEchrts....");
+        return "/echarts/index-Echrts";
+    }
 }
