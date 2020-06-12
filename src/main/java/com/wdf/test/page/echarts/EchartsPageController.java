@@ -22,7 +22,7 @@ public class EchartsPageController {
     @RequestMapping("/")
     public String menu(){
         logger.info("menu。。。。");
-        return "/echarts/menu";
+        return "/echarts/Menu";
     }
 
     /**
