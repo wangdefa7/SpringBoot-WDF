@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<#assign base=rc.contextPath />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--min.js 不含工具栏-->
+    <!--<script src="/js/echarts/echarts.min.js" type="text/javascript"></script>-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+<div id="main" style="width: 600px;height:400px;"></div>
+
+<script type="text/javascript">
+    var url = window.location.origin;
+    console.log(url+'/echarts/img/icon_sj.png')
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        graphic: [{
+            type: 'group',//group 是唯一的可以有子节点的容器。group 可以用来整体定位一组图形元素。
+            id: 'yearId',
+            right: '13%',
+            top: '1%',
+            /**
+             * 'all'：（默认） 表示用自身以及子节点整体的经过 transform 后的包围盒进行定位。 这种方式易于使整体都限制在父元素范围中。
+             * 'raw'： 表示仅仅用自身（不包括子节点）的没经过 tranform 的包围盒进行定位。 这种方式易于内容超出父元素范围的定位方式。
+             */
+            bounding: 'all',//决定此图形元素在定位时，对自身的包围盒计算方式。
+            z: 90,
+            width: '10%',
+            height: 115,
+            invisible:false,//是否可见
+            cursor : 'pointer',
+           // silent:false,//是否不响应鼠标以及触摸事件。
+            onclick:function () {
+                alert("123")
+            },
+            children: [
+                {
+                    type: 'image',
+                    z: 100,
+                    right:0,
+                    //invisible:false,//是否可见
+                    //bounding: 'all',
+                    //symbol:'image://'+url+'/echarts/img/icon_sj.png',//另一种方式加载图片
+                    style: {
+                        //https://echarts.apache.org/zh/option.html#graphic.elements-image.style.fill
+                        image:url+'/echarts/img/icon_sj.png',
+                        width: 15,
+                        height: 15
+                        //image: 'http://localhost/echarts/img/icon_sj.png',
+                        // fill: 'rgba(255,255,255,0.75)',//填充色。
+                        // stroke: '#c9ecdd',//笔画颜色。
+                        // lineWidth: 1,//笔画宽度。
+                        // shadowBlur: 1, //阴影宽度。
+                        // // shadowOffsetX: 3,
+                        // // shadowOffsetY: 3,
+                        // shadowColor: 'rgba(61,255,225,0.08)'//阴影颜色
+                    }
+
+                },
+                {
+                    type: 'text',
+                    z: 100,
+                    top: '1%',
+                    left: 0,
+                    style: {
+                        fill:'#c9ecdd',
+                        text: [
+                            '2019'
+                        ].join('\n'),
+                        font:'caption'
+                        //font: '15px "STHeiti", sans-serif'
+                    }
+                }
+            ]
+        }],
+        color:['#af21af','#ff2a2c'],
+        title : {
+            text: '实际金额（万）',
+            textStyle:{
+                color :'#3e9f90'
+            }
+        },
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            data:[{
+                name:'实际垫付金额',
+                textStyle: {
+                    width:50,
+                    fontSize : 12
+                   // color: 'red'          // 图例文字颜色
+                }
+            },{
+                name:'实际拨付金额',
+                textStyle: {
+                    //color: '#af21af'          // 图例文字颜色
+                }
+            }],
+            width:155,
+            itemWidth : 15,//图例标记的图形宽度。
+            itemGap : 60,//图例每项之间的间隔。横向布局时为水平间隔，纵向布局时为纵向间隔。
+            icon:'rect',//图标样式
+/*            emphasis:{//显示标签
+                selectorLabel:{
+                    show:false,//不显示
+                    color : "#3939ff"
+                }
+            },*/
+            formatter: function (name) {//提示文字以及样式
+                return echarts.format.truncateText(name, 40, '14px Microsoft Yahei', '…');
+            },
+            tooltip: {//提示文字
+                show: true
+            },
+        },
+        calculable : true,
+        xAxis : [
+            {
+                /**
+                 * 'value' 数值轴，适用于连续数据。
+                 'category' 类目轴，适用于离散的类目数据。为该类型时类目数据可自动从 series.data 或 dataset.source 中取，或者可通过 xAxis.data 设置类目数据。
+                 'time' 时间轴，适用于连续的时序数据，与数值轴相比时间轴带有时间的格式化，在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度。
+                 'log' 对数轴。适用于对数数据。
+                 */
+                type : 'category',
+                name:'横坐标名称',
+                // nameLocation ：'end',//坐标轴显示位置'start''middle' 或者 'center' 'end'
+                boundaryGap : false,
+                data : ['一月','二月','三月','四月','五月','六月','七月'],
+                axisLabel:{
+                    color:'#48ff44'
+                }
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'实际垫付金额',
+                type:'line',
+                /**
+                 * 如果是 boolean 类型，则表示是否开启平滑处理。如果是 number 类型（取值范围 0 到 1），
+                 * 表示平滑程度，越小表示越接近折线段，反之则反。设为 true 时相当于设为 0.5。
+                 */
+                smooth:true,//是否平滑曲线显示。
+                itemStyle: {//折线拐点标志的样式。
+                  //  color:'#69af1e',
+                    normal: {
+                        areaStyle:{//区域填充
+                        //    color:'#69af1e',
+                            origin : 'auto'
+                        },
+                    }
+                },
+                data:[10, 12, 21, 54, 260, 830, 710],
+                lineStyle:{//线条样式。
+                    /**线的类型
+                     * 'solid'
+                     'dashed'
+                     'dotted'
+                     */
+                    type:'solid',
+                    normal:{
+                     //   color:'#579f1d',//折线的颜色
+                        width:1
+                    }
+                }
+            },
+            {
+                name:'实际拨付金额',
+                type:'line',
+                smooth:true,
+                lineStyle:{
+                 //   color:'#bdb225',
+                    width:1
+                },
+                itemStyle: {
+                //    color:'#cec227',
+                    normal: {
+                        areaStyle: {
+                  //          color: '#b6ab22'
+                        }
+                    }
+                },
+                data:[30, 182, 434, 791, 390, 30, 10]
+            }
+        ],
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>
