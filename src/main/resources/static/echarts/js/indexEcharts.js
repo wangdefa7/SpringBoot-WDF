@@ -51,6 +51,8 @@ var realAmountOption = {
     title : {
         text: '实际金额（万）',
         textStyle:{
+            fontSize: 18,
+            fontWeight:500,//字体粗细
             color :'#3e9f90'
         }
     },
@@ -84,11 +86,11 @@ var realAmountOption = {
     xAxis : [
         {
             type : 'category',
-            name:'横坐标名称',
+          //  name:'横坐标名称',
             boundaryGap : false,
             data : ['一月','二月','三月','四月','五月','六月','七月'],
             axisLabel:{
-                color:'#48ff44'
+                color:'#999999'
             }
         }
     ],
@@ -105,9 +107,15 @@ var realAmountOption = {
             itemStyle: {//折线拐点标志的样式。
                 //  color:'#69af1e',
                 normal: {
-                    areaStyle:{//区域填充
-                        origin : 'auto'
-                    },
+                    areaStyle: {//区域填充
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: '#a4c6fa'
+                        }, {
+                            offset: 1,
+                            color: '#ffffff'
+                        }])
+                    }
                 }
             },
             data:[10, 12, 21, 54, 260, 830, 710],
@@ -127,7 +135,14 @@ var realAmountOption = {
             },
             itemStyle: {
                 normal: {
-                    areaStyle: {
+                    areaStyle: {//区域填充
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: '#8bd5f2'
+                        }, {
+                            offset: 1,
+                            color: '#ffffff'
+                        }])
                     }
                 }
             },
@@ -182,10 +197,11 @@ var reserveMarginOption = {
             }
         ]
     }],
-    color:['#a4c6fa','#8bd5f2'],
+    color:['#32b77d'],
     title : {
-        text: '实际金额（万）',
+        text: '预留保证金（千）',
         textStyle:{
+            fontWeight:500,//字体粗细
             color :'#3e9f90'
         }
     },
@@ -194,14 +210,10 @@ var reserveMarginOption = {
     },
     legend: {
         data:[{
-            name:'实际垫付金额',
+            name:'预留保证金',
             textStyle: {
                 width:50,
                 fontSize : 12
-            }
-        },{
-            name:'实际拨付金额',
-            textStyle: {
             }
         }],
         width:155,
@@ -219,11 +231,11 @@ var reserveMarginOption = {
     xAxis : [
         {
             type : 'category',
-            name:'横坐标名称',
+           // name:'横坐标名称',
             boundaryGap : false,
             data : ['一月','二月','三月','四月','五月','六月','七月'],
             axisLabel:{
-                color:'#48ff44'
+                color:'#999999'
             }
         }
     ],
@@ -234,39 +246,31 @@ var reserveMarginOption = {
     ],
     series : [
         {
-            name:'实际垫付金额',
+            name:'预留保证金',
             type:'line',
             smooth:true,//是否平滑曲线显示。
+            symbol:'circle',//标记的图形。
+            symbolSize : 10,//大小
             itemStyle: {//折线拐点标志的样式。
                 //  color:'#69af1e',
                 normal: {
-                    areaStyle:{//区域填充
-                        origin : 'auto'
-                    },
+                    areaStyle: {//区域填充
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: '#3e9f90'
+                        }, {
+                            offset: 1,
+                            color: '#ffffff'
+                        }])
+                    }
                 }
             },
             data:[10, 12, 21, 54, 260, 830, 710],
             lineStyle:{//线条样式。
                 type:'solid',
-                normal:{
-                    width:1
-                }
+                width:3
+
             }
-        },
-        {
-            name:'实际拨付金额',
-            type:'line',
-            smooth:true,
-            lineStyle:{
-                width:1
-            },
-            itemStyle: {
-                normal: {
-                    areaStyle: {
-                    }
-                }
-            },
-            data:[30, 182, 434, 791, 390, 30, 10]
         }
     ],
 };
@@ -317,10 +321,11 @@ var unreasonableAmountOption = {
             }
         ]
     }],
-    color:['#a4c6fa','#8bd5f2'],
+    color:[' #789cef'],
     title : {
-        text: '实际金额（万）',
+        text: '不合理费用（千）',
         textStyle:{
+            fontWeight:500,//字体粗细
             color :'#3e9f90'
         }
     },
@@ -329,14 +334,10 @@ var unreasonableAmountOption = {
     },
     legend: {
         data:[{
-            name:'实际垫付金额',
+            name:'不合理费用',
             textStyle: {
                 width:50,
                 fontSize : 12
-            }
-        },{
-            name:'实际拨付金额',
-            textStyle: {
             }
         }],
         width:155,
@@ -354,11 +355,11 @@ var unreasonableAmountOption = {
     xAxis : [
         {
             type : 'category',
-            name:'横坐标名称',
+           // name:'横坐标名称',
             boundaryGap : false,
             data : ['一月','二月','三月','四月','五月','六月','七月'],
             axisLabel:{
-                color:'#48ff44'
+                color:'#999999'
             }
         }
     ],
@@ -369,39 +370,22 @@ var unreasonableAmountOption = {
     ],
     series : [
         {
-            name:'实际垫付金额',
+            name:'不合理费用',
             type:'line',
-            smooth:true,//是否平滑曲线显示。
+            //smooth:'none',//是否平滑曲线显示。
+            smooth: 0.6,
+            symbol: 'none',//标记的图形
             itemStyle: {//折线拐点标志的样式。
-                //  color:'#69af1e',
-                normal: {
-                    areaStyle:{//区域填充
-                        origin : 'auto'
-                    },
-                }
             },
             data:[10, 12, 21, 54, 260, 830, 710],
             lineStyle:{//线条样式。
                 type:'solid',
-                normal:{
-                    width:1
-                }
+                width:3,
+                shadowColor: 'rgba(0, 0, 0, 0.5)',//阴影
+                shadowBlur: 5,
+                shadowOffsetY:5 //阴影垂直方向上的偏移距离。
+                //shadowOffsetX:0 //阴影水平方向上的偏移距离
             }
-        },
-        {
-            name:'实际拨付金额',
-            type:'line',
-            smooth:true,
-            lineStyle:{
-                width:1
-            },
-            itemStyle: {
-                normal: {
-                    areaStyle: {
-                    }
-                }
-            },
-            data:[30, 182, 434, 791, 390, 30, 10]
         }
     ],
 };
@@ -452,10 +436,11 @@ var overrateAmountOption = {
             }
         ]
     }],
-    color:['#a4c6fa','#8bd5f2'],
+    color:['#b785f8'],
     title : {
-        text: '实际金额（万）',
+        text: '超定额费用（千）',
         textStyle:{
+            fontWeight:500,//字体粗细
             color :'#3e9f90'
         }
     },
@@ -463,15 +448,12 @@ var overrateAmountOption = {
         trigger: 'axis'
     },
     legend: {
+        show: true,
         data:[{
-            name:'实际垫付金额',
+            name:'超定额费用',
             textStyle: {
                 width:50,
                 fontSize : 12
-            }
-        },{
-            name:'实际拨付金额',
-            textStyle: {
             }
         }],
         width:155,
@@ -489,11 +471,11 @@ var overrateAmountOption = {
     xAxis : [
         {
             type : 'category',
-            name:'横坐标名称',
+           // name:'横坐标名称',
             boundaryGap : false,
             data : ['一月','二月','三月','四月','五月','六月','七月'],
             axisLabel:{
-                color:'#48ff44'
+                color:'#999999'
             }
         }
     ],
@@ -504,39 +486,20 @@ var overrateAmountOption = {
     ],
     series : [
         {
-            name:'实际垫付金额',
+            name:'超定额费用',
             type:'line',
             smooth:true,//是否平滑曲线显示。
+            symbol: 'none',//折点
             itemStyle: {//折线拐点标志的样式。
-                //  color:'#69af1e',
-                normal: {
-                    areaStyle:{//区域填充
-                        origin : 'auto'
-                    },
-                }
             },
             data:[10, 12, 21, 54, 260, 830, 710],
             lineStyle:{//线条样式。
                 type:'solid',
-                normal:{
-                    width:1
-                }
+                width:3,
+                shadowColor: 'rgba(0, 0, 0, 0.5)',//阴影
+                shadowBlur: 5,
+                shadowOffsetY:5 //阴影垂直方向上的偏移距离。
             }
-        },
-        {
-            name:'实际拨付金额',
-            type:'line',
-            smooth:true,
-            lineStyle:{
-                width:1
-            },
-            itemStyle: {
-                normal: {
-                    areaStyle: {
-                    }
-                }
-            },
-            data:[30, 182, 434, 791, 390, 30, 10]
         }
     ],
 };
