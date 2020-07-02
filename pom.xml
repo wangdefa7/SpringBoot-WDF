@@ -20,7 +20,7 @@
     <!-- 打包的机制，如pom,jar, maven-plugin, ejb, war, ear, rar, par，默认为jar -->  
     <packaging>jar</packaging>
     <name>SpringBoot-WDF</name>
-    <description>Demo project for Spring Boot</description>
+    <description>WDF project for Spring Boot</description>
 
 	<!-- 为pom定义一些常量，在pom中的其它地方可以直接引用 使用方式 如下 ：${file.encoding} -->  
     <properties>
