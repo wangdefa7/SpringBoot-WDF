@@ -21,6 +21,7 @@ public class HttpTest {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HttpTest.class);
 
+	
 	@Test
 	public void mobileSms() {
 		JSONObject jsonObject = new JSONObject();
