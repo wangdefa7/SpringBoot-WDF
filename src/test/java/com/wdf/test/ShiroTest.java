@@ -18,6 +18,7 @@ public class ShiroTest {
 		System.out.println("环境测试");
 	}
 	 
+	
     /**
      * 
      * @Title: testHelloworld
