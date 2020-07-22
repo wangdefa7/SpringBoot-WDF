@@ -231,6 +231,14 @@
 		    <artifactId>jxl</artifactId>
 		    <version>2.6.12</version>
 		</dependency>
+		
+		<!-- 网络传输工具类Ftp -->
+		 <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.6</version>
+        </dependency>
+		
     </dependencies>
 
     
