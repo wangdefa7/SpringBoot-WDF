@@ -16,10 +16,22 @@ public class ParaseNumTest {
 		int num = 100;
 		/**
 		 *	 转换的进制范围2-36
+		 *	超出进制范围显示十进制的结果
 		 */
 		System.out.println(Integer.toString(num, 2));//转二进制
 		System.out.println(Integer.toString(num, 8));//转8进制
 		System.out.println(Integer.toString(num, 16));//转16进制
+		System.out.println(Integer.toString(num, 37));//转37进制，超出范围显示十进制结果
+		
+		/**
+		 * 	把其他进制转回十进制
+		 * parseInt返回的是int类型
+		 * valueOf 返回的是String类型
+		 */
+		System.out.println(Integer.parseInt("1100010", 2));//二进制转十进制
+		System.out.println(Integer.parseInt("62", 16));//16进制转十进制
+		System.out.println(Integer.parseInt("2q", 36));//二进制转十进制
+
 	}
 
 }
