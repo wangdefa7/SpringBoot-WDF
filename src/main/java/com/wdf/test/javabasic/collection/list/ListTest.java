@@ -29,7 +29,7 @@ public class ListTest {
 		for (int i = list.size()-1; i >= 0; i--) {
 			System.out.println(i);
 			if (list.get(i).equals("4") ||list.get(i).equals("0")) {
-				list.remove(i);
+				System.out.println(list.remove(new Integer(4)));
 			}
 		}
 		System.out.println("------------------");
