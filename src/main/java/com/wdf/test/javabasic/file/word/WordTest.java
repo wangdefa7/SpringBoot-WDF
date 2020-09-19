@@ -3,9 +3,7 @@ package com.wdf.test.javabasic.file.word;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import org.springframework.web.context.ContextLoader;
 
-import javax.servlet.ServletContext;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,8 +26,8 @@ public class WordTest {
          * 指定ftl文件所在目录的路径，而不是ftl文件的路径
          */
         //指定路径的第一种方式（根据某个类的相对路径指定）
-          //     configuration.setClassForTemplateLoading(this.getClass(), "/");
-        configuration.setClassForTemplateLoading(WordTest.class,"");
+//                configuration.setClassForTemplateLoading(this.getClass(), "");
+
         //指定路径的第二种方式，我的路径是C：/a.ftl
         //configuration.setDirectoryForTemplateLoading(new File("d:/"));
 
@@ -40,11 +38,9 @@ public class WordTest {
         configuration.setDefaultEncoding("UTF-8");
         Template tempWord = null;
         try {
-           // configuration.setDirectoryForTemplateLoading(new File("d:/"));
-//            final ServletContext servletContext = ContextLoader.getCurrentWebApplicationContext().getServletContext();
-//            configuration.setServletContextForTemplateLoading(servletContext, "/word/" );
+            configuration.setDirectoryForTemplateLoading(new File("d:/"));
 // 获取模板信息
-            tempWord = configuration.getTemplate("testword1.ftl");
+            tempWord = configuration.getTemplate("testword.ftl");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -98,14 +94,10 @@ public class WordTest {
             e.printStackTrace();
         }
     }
-
-
     // 调用方法
     public static void main(String[] args) {
         WordTest test = new WordTest();
         test.createWord();
     }
-
-
 }
 
