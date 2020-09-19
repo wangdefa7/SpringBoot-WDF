@@ -242,8 +242,15 @@
         <!--freemarjer word 文档-->
         <dependency>
             <groupId>org.freemarker</groupId>
-            <artifactId>freemarker-gae</artifactId>
+            <artifactId>freemarker</artifactId>
             <version>2.3.30</version>
+        </dependency>
+
+        <!-- 文件操作的工具类 -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>RELEASE</version>
         </dependency>
 		
     </dependencies>
