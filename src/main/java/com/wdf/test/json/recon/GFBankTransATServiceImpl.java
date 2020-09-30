@@ -42,27 +42,28 @@ public class GFBankTransATServiceImpl  {
 		//获取入参DataStore(包含para指示日期内所有batchno)，新逻辑入参只传batchNo
 		List cgb0034rc=new ArrayList();
 
-        cgb0034rc.add("20200814133800");
-        cgb0034rc.add("20200821160746");
-        cgb0034rc.add("20200821160746");
-        cgb0034rc.add("20200814143708");
-        cgb0034rc.add("20200814143708");
-        cgb0034rc.add("20200814143149");
-        cgb0034rc.add("20200814143149");
-        cgb0034rc.add("20200714155049");
-        cgb0034rc.add("20200715091348");
-        cgb0034rc.add("20200715092159");
-        cgb0034rc.add("20200715102938");cgb0034rc.add("20200715110817");
-        cgb0034rc.add("20200729144019");
-        cgb0034rc.add("20200729144019");
-        cgb0034rc.add("20200814133800");cgb0034rc.add("20200814104917");cgb0034rc.add("20200731171755");
-        cgb0034rc.add("20200702140626");
-        cgb0034rc.add("20200702140626");
-        cgb0034rc.add("20200702140626");
-        cgb0034rc.add("20200706100832");
-        cgb0034rc.add("20200706100832");
-        cgb0034rc.add("20200706100832");
-        cgb0034rc.add("20200706100832");
+		cgb0034rc.add("20200729B00000060");
+		cgb0034rc.add("20200729B00000060");
+		cgb0034rc.add("20200731B00000064");cgb0034rc.add("20200814B00000078");cgb0034rc.add("20200814B00000080");
+		cgb0034rc.add("20200814B00000080");
+		cgb0034rc.add("20200814B00000082");
+		cgb0034rc.add("20200814B00000082");
+		cgb0034rc.add("20200814B00000083");
+		cgb0034rc.add("20200814B00000083");
+		cgb0034rc.add("20200821B00000086");
+		cgb0034rc.add("20200821B00000086");
+		cgb0034rc.add("20200706B00000035");
+		cgb0034rc.add("20200714B00000036");
+		cgb0034rc.add("20200715B00000040");
+		cgb0034rc.add("20200715B00000044");
+		cgb0034rc.add("20200715B00000048");cgb0034rc.add("20200715B00000054");
+        cgb0034rc.add("20200702B00000025");
+        cgb0034rc.add("20200702B00000025");
+        cgb0034rc.add("20200702B00000025");
+        cgb0034rc.add("20200706B00000035");
+        cgb0034rc.add("20200706B00000035");
+        cgb0034rc.add("20200706B00000035");
+
         try{
             if (id != "" || null != id){
                 cgb0034rc.add(id);
@@ -72,16 +73,22 @@ public class GFBankTransATServiceImpl  {
             e.printStackTrace();
         }
 
-
-
+		StringBuffer stringBuffer = new StringBuffer();
+		StringBuffer stringBufferb = new StringBuffer();
         for(Object rcObj:cgb0034rc){//1、多批次
-			String result=transDetails0034(rcObj.toString());//调接口获取返参
-			FileOutputStream fileOutPutSream = new FileOutputStream("D:\\aTest.txt");
-			fileOutPutSream.write("测试数据写入".getBytes());
-			fileOutPutSream.close();
-			System.out.println("end");
-		}//遍历批次结束
+			Map result=transDetails0034(rcObj.toString());//调接口获取返参
+			String a = String.valueOf(result.get("a"));
+			String b = String.valueOf(result.get("b"));
+			stringBuffer.append(a+"&");
+			stringBufferb.append(b+"&");
 
+		}//遍历批次结束
+		FileOutputStream fileOutPutSream = new FileOutputStream("D:\\aTest\\GFDataA.txt");
+		fileOutPutSream.write(stringBuffer.toString().getBytes());
+		fileOutPutSream.close();
+		FileOutputStream fileOutPutSreama = new FileOutputStream("D:\\aTest\\GFDataB.txt");
+		fileOutPutSreama.write(stringBufferb.toString().getBytes());
+		fileOutPutSreama.close();
 		//执行插入、更新逻辑
 		//String msg=classifyAndUpdateDataStore(finDS,para);
 
@@ -99,19 +106,22 @@ public class GFBankTransATServiceImpl  {
 	 * @date:   2020年7月17日09:40:35
 	 */
 
-	public String transDetails0034(String para) throws Exception {
+	public Map transDetails0034(String para) throws Exception {
 		Map result = new HashMap();//保存返回结果集
 		String cgb_data = transDetailsXml0034(para);
 		logger.info("查询入参："+cgb_data);
 		logger.info(aip +"&&&&&");
 		String url = "http://"+ aip +":24/CGBClient/BankAction"; //设置一个前置机地址和端口号
 		String rep = HttpUtil.doPostBank(url, cgb_data);
+		System.out.println(rep);
 		//TODO 测试数据 接口文档返回数据示例
 //		rep="<?xml version="1.0" encoding="gbk" ?><BEDC><Message><commHead><tranCode>0032</tranCode><cifMaster>1000135170</cifMaster><entSeqNo>201712250032112608</entSeqNo><tranDate>20171225</tranDate><tranTime>112608</tranTime><retCode>000</retCode><entUserId>100001</entUserId><password>624ee25b195211cb9918a85718cfb7ba1ceab587122d1094058be4da1a383a51909b10d53e2808402aa558c81395ba38c7a6b94034fd69913d5d389cfca06e2881a5be9c26171a25624398f26f71f557c979c69e7c188853dc18faa70bd15ebca310192eb8a7d16825382a6235888e8bd121ad574ee929fc8124023b7ade3c4b</password></commHead><Body><account>134001505010001248</account><totalNum>1</totalNum><pageFlag>0</pageFlag><nextRecTranDate/><nextRecTranSeq/><nextRecTranCode/><reserve1>20171225</reserve1><reserve2>201712250032112608</reserve2><records><record><serialNo>0000000845770001</serialNo><dealDate>20171225</dealDate><loanSign>-</loanSign><dealMoney>100.00</dealMoney><financingSymbol>+</financingSymbol><usableMoney>502537509462.48</usableMoney><Abstract>网银转出</Abstract><dealBranch>199999</dealBranch><upBill/><oppoAccno>129011512010008241</oppoAccno><name>衅剔壳驶鸦罗声堰鬓轿匈屈备魂</name><rcvBankId>129011</rcvBankId><dealTime>112758</dealTime><abstractContent>0011附言</abstractContent><dealChannel>EIB</dealChannel><summary>0011备注</summary><postScript>0011附言</postScript><oppAccountType>1</oppAccountType><uniqueCode>199999201712250000000845770001</uniqueCode><cbsTranSeq>0001</cbsTranSeq><reserve1>20171225</reserve1><reserve2>201712250032112608</reserve2></record></records></Body></Message></BEDC>"
 		JSONObject jsonObject = XmlUtil.xmlToJson(rep);
 		logger.info("广发批量转账交易结果查询:" + jsonObject);
-
-		return jsonObject.toString();
+		Map map = new HashMap();
+		map.put("a",rep);
+		map.put("b",jsonObject.toString());
+		return map;
 		/*String retCode=jsonObject.getJSONObject("Message").getJSONObject("commHead").getString("retCode");
 		if("000".equals(retCode)||"888".equals(retCode)){
 			JSONObject body = jsonObject.getJSONObject("Message").getJSONObject("Body");
@@ -250,7 +260,7 @@ public class GFBankTransATServiceImpl  {
 		commHead.addElement("tranTime")
 				.addText(DateUtil.getCurrentDateToString("HH:mm:ss"));//时间
 		commHead.addElement("retCode")
-				.addText("");//返回码
+				.addText("000");//返回码
 		commHead.addElement("entUserId")
 				.addText(entUserId);//操作员
 		commHead.addElement("password")
