@@ -22,7 +22,7 @@ public class HttpTest {
 	private static final Logger logger = LoggerFactory.getLogger(HttpTest.class);
 
 	
-	@Test
+	//@Test
 	public void mobileSms() {
 		JSONObject jsonObject = new JSONObject();
 		logger.info("调用短信接口[/msg/mobileSms]....");
