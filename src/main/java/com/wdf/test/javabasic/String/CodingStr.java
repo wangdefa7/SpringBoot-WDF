@@ -13,9 +13,11 @@ import java.net.URLDecoder;
  **/
 public class CodingStr {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedEncodingException {
         CodingStr main = new CodingStr();
-        main.testErrorStr();
+        //main.testErrorStr();
+        main.testCoding();
+
     }
 
     public void testErrorStr(){
@@ -47,5 +49,27 @@ public class CodingStr {
          * 一个汉字2个字节，最终的结果就是：锟斤拷——锟(0xEFBF)，斤（0xBDEF），拷（0xBFBD）。
          */
 
+    }
+
+    /**
+     * @Author WDF
+     * @Description  测试编码转换
+     * @Date 2020/10/13 14:22
+     * @Param []
+     * @return void
+     **/
+    public void testCoding() throws UnsupportedEncodingException {
+
+        String name = "张三";
+        byte[] b1 = name.getBytes("UTF-8");
+        String name1 = new String(b1, "UTF-8"); //编码解码相同，正常显示
+        System.out.println(name1);
+        String name2 = new String(b1, "GBK"); //编码解码不同，乱码
+        System.out.println(name2);
+        byte[] b2 = name.getBytes("GBK");
+        String name3 = new String(b2, "GBK"); //编码解码相同，正常显示
+        System.out.println(name3);
+        String name4 = new String(b2, "UTF-8"); //编码解码不同，乱码
+        System.out.println(name4);
     }
 }
