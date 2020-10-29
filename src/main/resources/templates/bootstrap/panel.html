@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/webjars/jquery/3.1.1/jquery.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.css">
+    <script src="/icon/iconfont.js"></script>
+
+    <style>
+        .icon {
+            width: 2em;
+            height: 2em;
+            vertical-align: -0.7em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<svg class="icon" aria-hidden="true">
+    <use xlink:href="#urp_UnionPayCF"></use>
+</svg>
+<!--<li class="dib">
+    <svg class="icon svg-icon" aria-hidden="true">
+        <use xlink:href="#urp_UnionPayCF"></use>
+    </svg>
+    <div class="name">云闪付</div>
+    <div class="code-name">#urp_UnionPayCF</div>
+</li>-->
+<div class="container-fluid">
+    <div class="row">
+        <div  class="panel">
+            <div id="divId" class="col-xs-3 col-sm-2">
+                <div class="panel-heading">
+                    这是panelheading
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $("#divId").nextAll().remove();
+        var name = "Alipay";
+        for (var i= 0;i<30;i++){
+
+            $("#divId").after(
+                "<div  class=\"col-xs-3\">" +
+                "<div class=\"panel\">\n" +
+                "                                        <div class=\"panel-heading\">\n"  +
+                    "<svg class=\"icon\" aria-hidden=\"true\">\n" +
+                "    <use xlink:href=\"#urp_UnionPayCF\"></use>\n" +
+                "</svg>" +
+/*
+                "<img src='/img/"+ name +".png' width='15%' height='15%' onerror='imgExists(this)'>" +
+*/
+
+                /*
+                                "<img src='/img/"+ name +".png' width='15%' height='15%' onerror='javascript:this.src=\"/img/ABCPay.png\";'>" +
+                */
+                "名称" +
+                "                    +                    </div>\n" +
+                "                                        <div class=\"panel-body\">\n"
+                +" 内容 " +
+                "</div>\n" +
+                "                                        </div>\n" +
+                "                                    </div>");
+            if (i>15){
+               // debugger
+                name = name + i;
+            }
+           // if (i == 29) name = 'Alipay';
+            //console.log(name)
+        }
+        //console.log($("#divId").nextAll())
+        // $("#divId").nextAll().remove();
+    })
+
+    //默认图片不存在的时候进行替换
+    function imgExists(e){
+        //默认图片
+        var imgUrl = "/img/ABCPay.png";
+        var img = new Image();
+        img.src=imgUrl;
+        //判断图片大小是否大于0 或者 图片高度与宽度都大于0
+        // 当 imgObj 加载完毕后触发事件
+        img.onload = function () {
+            // 控制台打印 Image对象的 宽 和 高
+            //console.log(img.width + "----" + img.height);
+            if(img.filesize>0||(img.width>0&&img.height>0)){
+                e.src = imgUrl;
+                console.log(e.src)
+            }else{
+                console.log('无')
+                //默认图片也不存在的时候
+            }
+        };
+
+    }
+
+</script>
+</body>
+</html>

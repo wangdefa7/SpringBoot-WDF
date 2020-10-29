@@ -1,7 +1,5 @@
 package com.wdf.test.javabasic.file.ftp;
 
-import org.apache.commons.net.ftp.FTPClient;
-import sun.net.ftp.impl.FtpClient;
 
 /**
  * @ClassName: FtpClientUtil

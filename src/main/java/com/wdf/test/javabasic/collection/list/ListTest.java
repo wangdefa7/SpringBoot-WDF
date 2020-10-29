@@ -23,19 +23,20 @@ public class ListTest {
 		List<String> list = new ArrayList<String>();
 		
 		for (int i = 0; i < 5; i++) {
-			list.add(i+"");
+			list.add(i+"a");
 		}
 		
 		for (int i = list.size()-1; i >= 0; i--) {
-			System.out.println(i);
-			if (list.get(i).equals("4") ||list.get(i).equals("0")) {
-				System.out.println(list.remove(new Integer(4)));
+			//System.out.println(i);
+			if (i==4 || i==0) {
+				System.out.println(list.remove(i));
 			}
 		}
 		System.out.println("------------------");
-		for (String string : list) {
+		System.out.println(list.toString());
+		/*for (String string : list) {
 			System.out.println(string);
-		}
+		}*/
 	}
 
 }

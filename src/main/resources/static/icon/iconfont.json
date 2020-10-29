@@ -1,0 +1,86 @@
+{
+  "id": "2166023",
+  "name": "urp",
+  "font_family": "urp_iconfont",
+  "css_prefix_text": "urp_",
+  "description": "urp图标库",
+  "glyphs": [
+    {
+      "icon_id": "3370274",
+      "name": "医保",
+      "font_class": "Medicare",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "9306316",
+      "name": "云闪付",
+      "font_class": "UnionPayCF",
+      "unicode": "e68c",
+      "unicode_decimal": 59020
+    },
+    {
+      "icon_id": "10268530",
+      "name": "电子健康卡",
+      "font_class": "EhcPay",
+      "unicode": "e677",
+      "unicode_decimal": 58999
+    },
+    {
+      "icon_id": "10867066",
+      "name": "建设银行",
+      "font_class": "ccbUnionPay",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "734310",
+      "name": "现金",
+      "font_class": "money",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "1284626",
+      "name": "支付宝支付",
+      "font_class": "Alipay",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "4243788",
+      "name": "农业银行",
+      "font_class": "ABCPay",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "4417919",
+      "name": "广发银行",
+      "font_class": "CgbSmartPay",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "8286485",
+      "name": "扫码",
+      "font_class": "ScanCode",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "9306311",
+      "name": "微信支付",
+      "font_class": "WeChat",
+      "unicode": "e689",
+      "unicode_decimal": 59017
+    },
+    {
+      "icon_id": "9306315",
+      "name": "银联",
+      "font_class": "UnionPay",
+      "unicode": "e68b",
+      "unicode_decimal": 59019
+    }
+  ]
+}
