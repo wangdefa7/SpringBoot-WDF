@@ -8,6 +8,22 @@
     <script src="/icon/iconfont.js"></script>
 
     <style>
+
+/*
+        如果文档宽度小于 300 像素则修改背景颜色(background-color):
+*/
+        @media screen and (max-width: 600px){
+            /* class为 container 的元素宽度发生改变 */
+            .container{
+                width: 30%;
+            }
+            .container-fluid{
+                width: 30%;
+            }
+            body{
+                background-color: #57e60e;
+            }
+        }
         .icon {
             width: 2em;
             height: 2em;
@@ -31,7 +47,7 @@
 <div class="container-fluid">
     <div class="row">
         <div  class="panel">
-            <div id="divId" class="col-xs-3 col-sm-2">
+            <div id="divId" class="col-xs-1 col-sm-1">
                 <div class="panel-heading">
                     这是panelheading
                 </div>
@@ -47,7 +63,7 @@
         for (var i= 0;i<30;i++){
 
             $("#divId").after(
-                "<div  class=\"col-xs-3\">" +
+                "<div  class=\"col-lg-1\">" +
                 "<div class=\"panel\">\n" +
                 "                                        <div class=\"panel-heading\">\n"  +
                     "<svg class=\"icon\" aria-hidden=\"true\">\n" +

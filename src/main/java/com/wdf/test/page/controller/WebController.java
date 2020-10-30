@@ -22,12 +22,26 @@ public class WebController {
 
     Logger logger = LoggerFactory.getLogger(WebController.class);
 
+    /**
+     * @Author WDF
+     * @Description 访问域名首页跳转
+     * @Date 2020/10/30 11:01
+     * @Param []
+     * @return java.lang.String
+     **/
     @RequestMapping("/")
     public String index() {
         logger.info("访问了首页");
         return "redirect:/0.html";
     }
 
+    /**
+     * @Author WDF
+     * @Description 后台打印首页被谁访问过
+     * @Date 2020/10/30 11:01
+     * @Param [ip, city]
+     * @return java.lang.String
+     **/
     @RequestMapping("/address")
     @ResponseBody
     public String address(@RequestParam("ip") String ip, @RequestParam("city") String city) {

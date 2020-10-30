@@ -14,6 +14,13 @@ public class BootsTrapController {
 
     Logger log = LoggerFactory.getLogger(BootsTrapController.class);
 
+    /**
+     * @Author WDF
+     * @Description 进入 bootstrapPage页面
+     * @Date 2020/10/30 11:00 
+     * @Param []
+     * @return java.lang.String
+     **/
     @RequestMapping("/bootstrapPage")
     public String tablePage(){
         log.info("进入bootstrap - bootstrapPage页面");

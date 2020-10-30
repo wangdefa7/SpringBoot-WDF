@@ -252,7 +252,20 @@
             <artifactId>commons-io</artifactId>
             <version>RELEASE</version>
         </dependency>
-		
+        <!--swagger2 项目中使用SpringFox-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+
+        <!--显示基于JSON输入的HTML文档的GUI称为swagger-ui-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+
     </dependencies>
 
     
