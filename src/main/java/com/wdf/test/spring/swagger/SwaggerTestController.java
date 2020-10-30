@@ -3,6 +3,7 @@ package com.wdf.test.spring.swagger;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -23,9 +24,8 @@ import java.util.List;
  **/
 @RestController
 @RequestMapping("/swagger")
-@Api(description = "SwaggerTestController 类描述")
+@Api(description = "Api SwaggerTestController 类描述")
 public class SwaggerTestController {
-public class PersonController {
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     @ApiOperation("方法级别的描述")
@@ -47,10 +47,16 @@ public class PersonController {
     public void deletePerson(@ApiParam("ApiParam变量描述") @PathVariable int id) {
 
     }
-    }
+
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    @ApiOperation("post方法描述")
+    //@ApiOperation("post方法描述")
+    @ApiOperation(
+            value = "Find purchase order by ID",
+            notes = "For valid response try integer IDs with value <= 5 or > 10. Other values will generated exceptions",
+            response = SwaggerTestController.class,
+            tags = { "Pet Store" })
+    @ApiResponse(code = 400, message = "Invalid user supplied")
     public String createPerson(@ApiParam("变量描述") @RequestBody String str ) {
         return str;
     }

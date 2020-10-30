@@ -43,6 +43,12 @@ public class ShiroConfig {
         Map<String,String> filterMap = new LinkedHashMap<>();
         filterMap.put("/shiro","authc");//权限访问页面
         filterMap.put("/AuthTest", "perms[user:AuthTest]");//没有权限的认证访问,会跳转到未授权页面
+        filterMap.put("/swagger-ui.html", "anon");
+        filterMap.put("/swagger-resources", "anon");
+        filterMap.put("/v2/api-docs", "anon");
+        filterMap.put("/webjars/springfox-swagger-ui/**", "anon");
+        filterMap.put("/configuration/security", "anon");
+        filterMap.put("/configuration/ui", "anon");
 
 
         //将配置好的权限map放入shiro的过滤器中去
