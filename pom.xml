@@ -266,12 +266,31 @@
             <version>2.9.2</version>
         </dependency>
 
+        <!-- word 转 pdf -->
+        <dependency>
+            <groupId>com.aspose</groupId>
+            <artifactId>aspose-words</artifactId>
+            <version>15.8.0</version>
+        </dependency>
+
+
     </dependencies>
 
     
-    <build>  
-  
-    <!-- 产生的构件的文件名，默认值是${artifactId}-${version}。 -->  
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+
+        <!-- 产生的构件的文件名，默认值是${artifactId}-${version}。 -->
     <!-- <finalName>WDFPorject</finalName>   -->
   
     <!-- 构建产生的所有文件存放的目录,默认为${basedir}/target，即项目根目录下的target -->  

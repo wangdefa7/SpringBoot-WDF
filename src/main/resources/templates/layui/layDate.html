@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时间控件</title>
+    <script src="/js/layDate/laydate.js"></script>
+    <!--<script type="text/javascript" src="/webjars/layui/2.5.6/layui.all.js"></script>-->
+    <!--<link href="/webjars/layui/2.5.6/css/modules/laydate/default/laydate.css">
+    <script type="text/javascript" src="/webjars/layui/2.5.6/lay/modules/laydate.js"></script>-->
+</head>
+<body>
+<input type="text" id="test1">
+<script>
+    window.onload = function () {
+        //执行一个laydate实例
+        //时间选择器
+        laydate.render({
+            elem: '#test1'
+            ,type: 'time'
+        });
+    }
+
+</script>
+</body>
+</html>

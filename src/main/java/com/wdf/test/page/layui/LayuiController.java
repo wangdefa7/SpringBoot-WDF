@@ -64,4 +64,18 @@ public class LayuiController {
 		}
     	return bytes2;
     }
+
+
+    /**
+     * @Author WDF
+     * @Description 打开layDate页面
+     * @Date 2020/11/2 10:38
+     * @Param []
+     * @return java.lang.String
+     **/
+    @RequestMapping("/openLayDatePage")
+    public String openLayDatePage(){
+		log.info("openLayDatePage...");
+    	return "/layui/layDate";
+	}
 }
