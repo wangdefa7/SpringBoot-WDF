@@ -11,8 +11,8 @@ package com.wdf.test.javabasic.file.pdf;
 public class TestCovertToPdf {
 
     public static void main(String[] arg){
-        String docPath = "E:\\test.doc";
-        String pdfPath = "E:\\test.pdf";
+        String docPath = "D:/urp/export/doc/2020-11-06日对账报表.doc";
+        String pdfPath = "D:/urp/export/pdf/2020-11-06日对账报表.pdf";
         Word2PdfAsposeUtil.doc2pdf(docPath,pdfPath);
     }
 }

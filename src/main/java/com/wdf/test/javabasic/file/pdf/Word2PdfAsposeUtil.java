@@ -3,6 +3,8 @@ package com.wdf.test.javabasic.file.pdf;
 import com.aspose.words.Document;
 import com.aspose.words.License;
 import com.aspose.words.SaveFormat;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.ResourcePatternUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -25,6 +27,9 @@ public class Word2PdfAsposeUtil {
         try {
             //SpringBoot 会加载 resource 目录下面的
             InputStream is = Word2PdfAsposeUtil.class.getClassLoader().getResourceAsStream("templates\\file\\pdf\\license.xml"); // license.xml应放在..\WebRoot\WEB-INF\classes路径下
+            //springBoot项目中运行的时候应该执行下面的这种方法否则会导致获取不到文件
+            //在IDE运行可以通过测试，当时当打成jar包后运行报java.io.FileNotFoundException
+            //Resource[] resources = ResourcePatternUtils.getResourcePatternResolver(null).getResources("classpath:templates\\file\\pdf\\license.xml");
             License aposeLic = new License();
             aposeLic.setLicense(is);
             result = true;
