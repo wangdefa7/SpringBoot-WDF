@@ -273,6 +273,15 @@
             <version>15.8.0</version>
         </dependency>
 
+        <!-- word 转 pdf 外部jar-->
+        <dependency>
+            <groupId>aspose-words</groupId>
+            <artifactId>aspose-words</artifactId>
+            <version>3.2.0.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/aspose-words-15.8.0-jdk16.jar</systemPath>
+        </dependency>
+
 
     </dependencies>
 
@@ -386,6 +395,24 @@
     	<plugin>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+        <!-- 外部的jar包一同打入 -->
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <configuration>
+                        <mainClass>com.dw.health.urp.Starter</mainClass>
+                    </configuration>
+                    <goals>
+                        <goal>repackage</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <includeSystemScope>true</includeSystemScope>
+            </configuration>
         </plugin>
 <!--         <plugin>  
             <groupId></groupId>  
