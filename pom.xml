@@ -266,13 +266,6 @@
             <version>2.9.2</version>
         </dependency>
 
-        <!-- word 转 pdf -->
-        <dependency>
-            <groupId>com.aspose</groupId>
-            <artifactId>aspose-words</artifactId>
-            <version>15.8.0</version>
-        </dependency>
-
         <!-- word 转 pdf 外部jar-->
         <dependency>
             <groupId>aspose-words</groupId>
@@ -281,6 +274,23 @@
             <scope>system</scope>
             <systemPath>${basedir}/lib/aspose-words-15.8.0-jdk16.jar</systemPath>
         </dependency>
+
+        <!--dingding sdk start-->
+        <dependency>
+            <groupId>taobao-sdk-java-auto</groupId>
+            <artifactId>taobao-sdk-java-auto</artifactId>
+            <version>0.0.0.1</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/taobao-sdk-java-auto_1479188381469-20201109.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>aspose-words</groupId>
+            <artifactId>aspose-words</artifactId>
+            <version>3.2.0.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/aspose-words-15.8.0-jdk16.jar</systemPath>
+        </dependency>
+        <!--dingding sdk end-->
 
 
     </dependencies>
