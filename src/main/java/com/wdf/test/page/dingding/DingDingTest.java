@@ -85,11 +85,17 @@ public class DingDingTest {
             info = response.getErrmsg();
             msg.append(response.getBody());
             accessToken = response.getAccessToken();
+            if (!response.getErrorCode().equals("0")){
+                map.put("errorCode",1);
+                map.put("errorMsg",response.getBody());
+                return map.toString();
+            }
         } catch (ApiException e) {
             map.put("errorCode",1);
             map.put("errorMsg",info);
             e.printStackTrace();
             logger.error(e.getErrMsg());
+            return map.toString();
         }
 
         //根据手机号获取UserId
@@ -106,11 +112,17 @@ public class DingDingTest {
             logger.info(rsp.getBody());
             msg.append("<br>获取用户信息"+rsp.getBody());
             UserId = rsp.getUserid();
+            if (!rsp.getErrorCode().equals("0")){
+                map.put("errorCode",1);
+                map.put("errorMsg",rsp.getBody());
+                return map.toString();
+            }
         } catch (ApiException e) {
             map.put("errorCode",1);
             map.put("errorMsg",info);
             e.printStackTrace();
             logger.error(e.getErrMsg());
+            return map.toString();
         }
 
         //推送消息
@@ -131,12 +143,17 @@ public class DingDingTest {
             logger.info(rsp.getBody());
             TaskId = rsp.getTaskId();
             msg.append("<br>消息发送："+rsp.getBody());
+            if (!rsp.getErrorCode().equals("0")){
+                map.put("errorCode",1);
+                map.put("errorMsg",rsp.getBody());
+                return map.toString();
+            }
         } catch (ApiException e) {
             map.put("errorCode",1);
             map.put("errorMsg",info);
             e.printStackTrace();
             logger.error(e.getErrMsg());
-
+            return map.toString();
         }
 
         //查询发送状态
@@ -149,13 +166,22 @@ public class DingDingTest {
             info = rsp.getErrmsg();
             msg.append("<br>发送状态"+rsp.getBody());
             logger.info("发送状态"+rsp.getBody());
+            if (!rsp.getErrorCode().equals("0")){
+                map.put("errorCode",1);
+                map.put("errorMsg",rsp.getBody());
+                return map.toString();
+            }
         } catch (ApiException e) {
             map.put("errorCode",1);
             map.put("errorMsg",info);
             e.printStackTrace();
             logger.error(e.getErrMsg());
+            return map.toString();
         }
         logger.info(msg.toString());
+        if (map.containsKey("errorCode")&& map.get("errorCode") == "1"){
+            return map.toString();
+        }
         map.put("errorCode",0);
         map.put("errorMsg","ok");
 
