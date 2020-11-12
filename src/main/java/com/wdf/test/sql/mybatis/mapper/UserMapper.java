@@ -17,15 +17,15 @@ import com.wdf.test.sql.mybatis.domain.User;
 @Mapper
 public interface UserMapper {
 
-	public List<User> Select();
+	List<User> select();
 	
-	public int insert();
+	int insert();
 	
-	public User selectByName(String name);
+	User selectByName(String name);
 	
-	public int update(User user);
+	int update(User user);
 	
-	public int delete(User user);
+	int delete(User user);
 	
 	/**
 	 * 
@@ -36,5 +36,5 @@ public interface UserMapper {
 	 * @param id
 	 * @return
 	 */
-	public List<String> selectPerms(String id);
+	List<String> selectPerms(String id);
 }

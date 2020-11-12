@@ -5,7 +5,7 @@
     <title>Select2-Test</title>
 
     <!-- 加载 Jquery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/js/jquery/jquery-3.4.1.js"></script>
 
     <!-- 加载 Select2 -->
    <!--  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
@@ -48,7 +48,7 @@
                 }
             },
             processResults:function (data) {// 返回的数据
-                console.log(data)
+                console.log(data);
                 return {
                     results:data
                 }
@@ -56,7 +56,7 @@
             cache:false
         }
     });
-    $("#id-select2").val(2).trigger("change")
+    $("#id-select2").val(2).trigger("change");
 
     $('#id-select2-1').select2({
         placeholder: 'Ajax后端获取数据示例',

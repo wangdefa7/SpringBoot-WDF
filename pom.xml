@@ -292,6 +292,13 @@
         </dependency>
         <!--dingding sdk end-->
 
+        <!--oracle-->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.1</version>
+        </dependency>
+
 
     </dependencies>
 
