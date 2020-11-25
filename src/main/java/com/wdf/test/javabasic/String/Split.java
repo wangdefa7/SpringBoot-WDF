@@ -10,6 +10,13 @@ public class Split {
 		strz = string.split("set");
 		System.out.println(strz[0]);
 		System.out.println(strz[1]);
+
+
+		String str1 ="T+1 ";
+		//两种转义方式
+		//String[] strz1 = str1.split("[+]");
+		String[] strz1 = str1.split("\\+");
+		System.out.println(strz1[1]);
 	}
 
 }

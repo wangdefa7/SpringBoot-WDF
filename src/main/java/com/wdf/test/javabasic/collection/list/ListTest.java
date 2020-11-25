@@ -1,7 +1,6 @@
 package com.wdf.test.javabasic.collection.list;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 
@@ -17,6 +16,7 @@ public class ListTest {
 	public static void main(String[] args) {
 		ListTest listTest  = new ListTest();
 		listTest.removeElement();
+		listTest.listIncludeMap();
 	}
 	
 	public void removeElement() {
@@ -37,6 +37,26 @@ public class ListTest {
 		/*for (String string : list) {
 			System.out.println(string);
 		}*/
+	}
+
+	/**
+	 * @Author WDF
+	 * @Description list包含map
+	 * @Date 2020/11/13 9:49
+	 * @Param []
+	 * @return void
+	 **/
+	public void listIncludeMap(){
+		Map map = new HashMap();
+		map.put("key1","value1");
+		map.put("key2","value2");
+		List list = new LinkedList();
+		list.add(map);
+		map.clear();
+		map.put("key3","value3");
+		map.put("key4","value4");
+		list.add(map);
+		System.out.println(list.toString());
 	}
 
 }

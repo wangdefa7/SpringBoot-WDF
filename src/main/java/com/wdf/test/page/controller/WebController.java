@@ -1,5 +1,8 @@
 package com.wdf.test.page.controller;
 
+import com.wdf.test.config.result.ResponseResult;
+import com.wdf.test.config.result.Result;
+import com.wdf.test.config.result.ResultCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -18,6 +21,7 @@ import com.alibaba.fastjson.JSONObject;
  * @version: V1.0
  */
 @Controller
+@ResponseResult
 public class WebController {
 
     Logger logger = LoggerFactory.getLogger(WebController.class);
@@ -53,5 +57,26 @@ public class WebController {
         return jsonObject.toJSONString();
     }
 
+    @RequestMapping("/resultCode/s")
+    @ResponseBody
+    public Result TestResultCode(){
+        logger.info("TestResultCode...");
+        return new Result(ResultCode.SUCCESS,"TestResultCode");
+    }
+
+    @RequestMapping("/resultCode/static")
+    @ResponseBody
+    public Result TestResultCodeStatic(){
+        logger.info("TestResultCode...");
+        return Result.success("测试静态方法返回值的调用");
+    }
+
+    @RequestMapping("/resultCode/a")
+    @ResponseBody
+    @ResponseResult
+    public String TestResultCodeAnnotation(){
+        logger.info("TestResultCodeAnnotation...");
+        return "TestResultCodeAnnotation";
+    }
    
 }
