@@ -32,9 +32,14 @@ public class TestException {
 			System.out.println(a);
 		} catch (Exception e) {
 	//		e.getCause();
+			System.out.println("e:" + e);
+			System.out.println("e.toString():" + e.toString());
+			System.out.println("e.getMessage():" + e.getMessage());
 			e.getLocalizedMessage();
+			System.out.println("----");
 			e.getMessage();
 //			e.getStackTrace();
+			System.out.println("----");
 			e.printStackTrace();
 			// TODO: handle exception
 		}finally {

@@ -24,6 +24,7 @@ public class LogBasic {
 		logger.warn("[{}]",msg);
 		System.out.println("-------------");
 		logger.info("[{}]  [{}]",msg,msg);
+		logger.info("{} - {} - {}",msg,msg,msg);
 		logger.info("{}",msg);//日志最简单格式
 	}
 }
