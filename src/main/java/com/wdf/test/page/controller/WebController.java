@@ -21,7 +21,8 @@ import com.alibaba.fastjson.JSONObject;
  * @version: V1.0
  */
 @Controller
-@ResponseResult
+@RequestMapping
+//@ResponseResult
 public class WebController {
 
     Logger logger = LoggerFactory.getLogger(WebController.class);

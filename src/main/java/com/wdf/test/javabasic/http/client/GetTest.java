@@ -1,12 +1,13 @@
 package com.wdf.test.javabasic.http.client;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.io.InputStreamReader;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
@@ -19,6 +20,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.dom4j.DocumentException;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -43,11 +45,16 @@ public class GetTest {
 			// 获得Http客户端(可以理解为:你得先有一个浏览器;注意:实际上HttpClient与浏览器是不一样的)
 			CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 			// 创建Get请求
-			HttpGet httpGet = new HttpGet(URL+"/doGetControllerOne");
-	 
+			//	HttpGet httpGet = new HttpGet(URL+"/doGetControllerOne");
+
 			// 响应模型
 			CloseableHttpResponse response = null;
+
+			String url = "http://172.16.1.162:8070/IPay_Recharge?contentInfo=" +
+					"{\"patientName\":\"梅龙泽            \",\"tradeNumber\":\"20210114P00042598DAREWAY\",\"overdueRefundFlag\":\"0\",\"patientID\":224773,\"cardCode\":\"541827\",\"fee\":0.01,\"operationSigns\":\"1\",\"telephone\":\"13345101350\",\"OperatorID\":\"10003\",\"cardNo\":\"370102198402024119\",\"receiveUserName\":\"梅龙泽\",\"paymentType\":\"3\",\"channelsMark\":\"5\",\"accountID\":119169,\"RechargeFlag\":\"0\",\"rechargeUserName\":\"梅龙泽\",\"PayBackFlag\":\"1\",\"SubCallSerialNumber\":\"2021011405000067\"}";
+
 			try {
+				HttpGet httpGet = new HttpGet(URLEncoder.encode(url, "UTF-8"));
 				// 由客户端执行(发送)Get请求
 				response = httpClient.execute(httpGet);
 				// 从响应模型中获取响应实体
@@ -153,4 +160,55 @@ public class GetTest {
 				}
 			}
 		}
+
+
+
+
+	@Test
+	public  void ipaySendGet() {
+		String result = "";
+		BufferedReader in = null;
+		String url = "http://172.16.1.162:8070/IPay_Recharge?contentInfo=" ;
+		String data =
+"{\"patientName\":\"梅龙泽            \",\"tradeNumber\":\"20210114P00042598DAREWAY\",\"overdueRefundFlag\":\"0\",\"patientID\":224773,\"cardCode\":\"541827\",\"fee\":0.01,\"operationSigns\":\"1\",\"telephone\":\"13345101350\",\"OperatorID\":\"10003\",\"cardNo\":\"370102198402024119\",\"receiveUserName\":\"梅龙泽\",\"paymentType\":\"3\",\"channelsMark\":\"5\",\"accountID\":119169,\"RechargeFlag\":\"0\",\"rechargeUserName\":\"梅龙泽\",\"PayBackFlag\":\"1\",\"SubCallSerialNumber\":\"2021011405000067\"}";
+			//HttpGet httpGet = new HttpGet(URLEncoder.encode(url, "UTF-8"));
+		try {
+			//URL realUrl = new URL(url);
+			//data = URLEncoder.encode(data, "UTF-8");
+			url = url + data;
+			URL realUrl = new URL(url);
+			// 打开和URL之间的连接
+			URLConnection connection = realUrl.openConnection();
+			// 设置通用的请求属性
+			connection.connect();
+			// 定义 BufferedReader输入流来读取URL的响应
+			in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			String line;
+			while ((line = in.readLine()) != null) {
+				result += line;
+			}
+			System.out.println(result);
+			//logger.info("调用结果为:" + result);
+		} catch (Exception e) {
+			System.out.println("发送GET请求出现异常！" + e);
+			e.printStackTrace();
+		}finally {
+			try {
+				if (in != null) {
+					in.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		JSONObject resultObject = new JSONObject();
+		/*try {
+			//resultObject = XmlUtil.xmlToJson(result).getJSONObject("string");
+//			logger.info("his调用结果:" + resultObject.toString());
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		//return "";
+	}
 }
