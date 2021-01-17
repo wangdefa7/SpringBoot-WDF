@@ -18,6 +18,7 @@ public class Syschronized {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }*/
+
                 syn.increse();
                 synWithout.increse();
                // System.out.println(" i= "+i);
