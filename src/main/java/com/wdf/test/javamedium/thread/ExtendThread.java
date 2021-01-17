@@ -1,4 +1,4 @@
-package com.wdf.test.javabasic.thread;
+package com.wdf.test.javamedium.thread;
 
 public class ExtendThread {
 
