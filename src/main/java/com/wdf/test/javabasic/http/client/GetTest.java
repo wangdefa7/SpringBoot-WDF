@@ -168,14 +168,19 @@ public class GetTest {
 	public  void ipaySendGet() {
 		String result = "";
 		BufferedReader in = null;
-		String url = "http://172.16.1.162:8070/IPay_Recharge?contentInfo=" ;
+		String url = "http://172.16.1.162:8070/FeeService.asmx/IPay_Recharge?contentInfo=" ;
 		String data =
-"{\"patientName\":\"梅龙泽            \",\"tradeNumber\":\"20210114P00042598DAREWAY\",\"overdueRefundFlag\":\"0\",\"patientID\":224773,\"cardCode\":\"541827\",\"fee\":0.01,\"operationSigns\":\"1\",\"telephone\":\"13345101350\",\"OperatorID\":\"10003\",\"cardNo\":\"370102198402024119\",\"receiveUserName\":\"梅龙泽\",\"paymentType\":\"3\",\"channelsMark\":\"5\",\"accountID\":119169,\"RechargeFlag\":\"0\",\"rechargeUserName\":\"梅龙泽\",\"PayBackFlag\":\"1\",\"SubCallSerialNumber\":\"2021011405000067\"}";
-			//HttpGet httpGet = new HttpGet(URLEncoder.encode(url, "UTF-8"));
+			//"{\"patientName\":\"梅龙泽            \",\"tradeNumber\":\"20210114P00042598DAREWAY\",\"overdueRefundFlag\":\"0\",\"patientID\":224773,\"cardCode\":\"541827\",\"fee\":0.01,\"operationSigns\":\"1\",\"telephone\":\"13345101350\",\"OperatorID\":\"10003\",\"cardNo\":\"370102198402024119\",\"receiveUserName\":\"梅龙泽\",\"paymentType\":\"3\",\"channelsMark\":\"5\",\"accountID\":119169,\"RechargeFlag\":\"0\",\"rechargeUserName\":\"梅龙泽\",\"PayBackFlag\":\"1\",\"SubCallSerialNumber\":\"2021011405000067\"}";
+			//"{\"patientName\":\"高长海\",\"tradeNumber\":\"20210114P00042583DAREWAY\",\"overdueRefundFlag\":\"0\",\"patientID\":10528,\"cardCode\":\"260264\",\"fee\":0.01,\"operationSigns\":\"1\",\"telephone\":\"13256730391\",\"OperatorID\":\"535\",\"cardNo\":\"372926198701182818\",\"receiveUserName\":\"高长海\",\"paymentType\":\"3\",\"channelsMark\":\"5\",\"accountID\":5492,\"RechargeFlag\":\"0\",\"rechargeUserName\":\"高长海\",\"PayBackFlag\":\"1\",\"SubCallSerialNumber\":\"2021011405000054\"}";
+			"{\"patientName\":\"高长海\",\"tradeNumber\":\"20210114P00042583DAREWAY\",\"overdueRefundFlag\":\"0\",\"patientID\":10528,\"cardCode\":\"260264\",\"fee\":0.01,\"operationSigns\":\"1\",\"telephone\":\"13256730391\",\"OperatorID\":\"535\",\"cardNo\":\"372926198701182818\",\"receiveUserName\":\"高长海\",\"paymentType\":\"3\",\"channelsMark\":\"5\",\"accountID\":5492,\"RechargeFlag\":\"0\",\"rechargeUserName\":\"高长海\",\"PayBackFlag\":\"1\",\"SubCallSerialNumber\":\"2021011405000054\"}";
+		//HttpGet httpGet = new HttpGet(URLEncoder.encode(url, "UTF-8"));
+
 		try {
 			//URL realUrl = new URL(url);
 			//data = URLEncoder.encode(data, "UTF-8");
-			url = url + data;
+			//url = url + data;
+			//url = "http://localhost:80/address?\"ip\"=\"高长海\"&\"city\"=\"20210114P00042583DAREWAY\"";
+			url = "http://localhost:80/testMap?map={\"patientName\":\"高长海\",\"tradeNumber\":\"20210114P00042583DAREWAY\"}";
 			URL realUrl = new URL(url);
 			// 打开和URL之间的连接
 			URLConnection connection = realUrl.openConnection();
