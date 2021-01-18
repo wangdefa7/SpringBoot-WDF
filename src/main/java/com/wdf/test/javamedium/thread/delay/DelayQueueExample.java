@@ -1,4 +1,4 @@
-package com.wdf.test.javabasic.thread.delay;
+package com.wdf.test.javamedium.thread.delay;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.DelayQueue;
