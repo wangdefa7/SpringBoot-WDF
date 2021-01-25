@@ -11,7 +11,8 @@ package com.wdf.test.javabasic.String;
 public class Zifu {
 
     public static void main(String[] args) {
-        qudizhifu_alone();
+        //qudizhifu_alone();
+        zhuanyi();
     }
 
     /**
@@ -32,5 +33,23 @@ public class Zifu {
         System.out.println("2&0:" + (b & 0));
         System.out.println("1&1:" + (a & 1));
         System.out.println("1&2:" + (a & 2));
+    }
+
+    public static void zhuanyi(){
+        String str = " \" ";// 输出："
+        System.out.println(str);
+        str = " \\\" ";
+        System.out.println(str);// 输出：\"
+        str = "\\+";
+        System.out.println(str);
+        str = "+";
+        System.out.println(str);
+
+        //不转义会报错：Dangling meta character '+' near index 0
+        String[] array = "T+1".split("\\+");//转义
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
+
     }
 }
