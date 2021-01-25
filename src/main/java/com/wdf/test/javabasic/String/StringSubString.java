@@ -23,6 +23,7 @@ public class StringSubString {
 		String test = "20200703101025";
 		System.out.println(test.substring(0,8));//0,1位置的显示，2位置的不显示
 		System.out.println(test.substring(2,3));//显示2，3位置的不显示
+		System.out.println(test.substring(-1,2));
 
 		String urlString = "http://172.16.1.162:8070/FeeService.asmx/IPay_GetStatementInfo";
 		int position = urlString.lastIndexOf(".asmx");//

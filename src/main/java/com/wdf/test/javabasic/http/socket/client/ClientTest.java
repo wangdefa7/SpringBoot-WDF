@@ -1,0 +1,39 @@
+package com.wdf.test.javabasic.http.socket.client;
+
+import java.io.*;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+/**
+ * @ClassName: ClientTest
+ * @Author WDF
+ * @Description //TODO
+ * @Date 2021/1/22 14:49
+ * @Copyright Dareway 2021/1/22
+ * @Version 1.0
+ **/
+public class ClientTest {
+
+    public static void main(String [] args)
+    {
+        String serverName = "localhost";
+        int port = Integer.parseInt("8888");
+        try
+        {
+            System.out.println("连接到主机：" + serverName + " ，端口号：" + port);
+            Socket client = new Socket(serverName, port);
+            System.out.println("远程主机地址：" + client.getRemoteSocketAddress());
+            OutputStream outToServer = client.getOutputStream();
+            DataOutputStream out = new DataOutputStream(outToServer);
+
+            out.writeUTF("Hello from " + client.getLocalSocketAddress());
+            InputStream inFromServer = client.getInputStream();
+            DataInputStream in = new DataInputStream(inFromServer);
+            System.out.println("服务器响应： " + in.readUTF());
+            client.close();
+        }catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+}
