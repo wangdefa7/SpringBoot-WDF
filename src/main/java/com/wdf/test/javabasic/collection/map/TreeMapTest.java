@@ -23,9 +23,12 @@ public class TreeMapTest {
 				return b.compareTo(a);
 			}
 		});
-		map.put("a", "b");
-		map.put("b", "b");
-		map.put("c", "b");
+//		map.put("a", "b");
+//		map.put("b", "b");
+//		map.put("c", "b");
+		map.put("1", "1");
+		map.put("3", "3");
+		map.put("2", "2");
 		System.out.println(map);
 	}
 

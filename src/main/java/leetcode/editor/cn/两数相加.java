@@ -47,19 +47,20 @@ import java.util.Stack;
 public class 两数相加{
 	public static void main(String[] args) {
 		Solution solution = new 两数相加().new Solution();
+		ListNode p = null;
 		ListNode l1 = new ListNode(2);
-		ListNode l2 = new ListNode(5);
-		l1 = l1.next;
-		//l1.next = new ListNode(2);
-		l1.next = new ListNode(4);
-		l1 = l1.next;
-		l1.next = new ListNode(3);
+		p = l1;
+		p.next = new ListNode(4);
+		p = p.next;
+		p.next = new ListNode(3);
 
-		//l2.next = new ListNode(5);
-		l2 = l2.next;
-		l2.next = new ListNode(6);
-		l2 = l2.next;
-		l2.next = new ListNode(4);
+
+		ListNode l2 = new ListNode(5);
+		p = l2;
+		p.next = new ListNode(6);
+		p = p.next;
+		p.next = new ListNode(4);
+
 		System.out.println();
 		ListNode l3 = solution.addTwoNumbers(l1,l2);
 		while (l3 != null){
@@ -90,39 +91,35 @@ public class 两数相加{
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 		int a1 = 0,a2 = 0,a = 1,sum = 0,qy = 0;
-		boolean flag = true;
-		Stack stack = new Stack();
-    	while (l1.next !=null || l2.next != null){
-    		if (l1.next != null){
+		ListNode l3 = new ListNode(0);
+		ListNode p = l3;
+
+    	while (l1 !=null || l2 != null){
+    		if (l1 != null){
     			a1 = l1.val;
+				l1 = l1.next;
+
 			}
-    		l1 = l1.next;
-    		if (l2.next != null){
+    		if (l2 != null){
     			a2 = l2.val;
+				l2 = l2.next;
 			}
-    		l2 = l2.next;
 			sum =  qy + a1 + a2;
 			qy = 0;
 			if (sum > 9){
 				qy = sum / 10;
 				sum =  sum % 10;
 			}
-			stack.push(sum);
-			if (l1.next ==null || l2.next == null){
-				if (qy != 0){
-					stack.push(qy);
-				}
-				break;
-			}
-
     		a1 = 0;
     		a2 = 0;
+			p.next = new ListNode(sum);
+			p = p.next;
 		}
-		ListNode l3 = new ListNode((Integer) stack.pop());
-    	while (!stack.empty()){
-			l3.next = new ListNode((Integer) stack.pop());
+    	if (qy != 0){
+			p.next = new ListNode(qy);
+			p = p.next;
 		}
-    	return l3;
+    	return l3.next;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

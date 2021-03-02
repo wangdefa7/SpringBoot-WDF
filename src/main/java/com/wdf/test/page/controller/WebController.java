@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
+
+import java.util.HashMap;
+
 /**
  * 
  * @Package: com.wdf.test.page.controller
@@ -26,6 +29,8 @@ import com.alibaba.fastjson.JSONObject;
 public class WebController {
 
     Logger logger = LoggerFactory.getLogger(WebController.class);
+    public static int num = 0;
+    public static HashMap<Integer,Integer> map = new HashMap<>();
 
     /**
      * @Author WDF
@@ -78,6 +83,27 @@ public class WebController {
     public String TestResultCodeAnnotation(){
         logger.info("TestResultCodeAnnotation...");
         return "TestResultCodeAnnotation";
+    }
+
+    @RequestMapping("/test")
+    @ResponseBody
+    public int test(){
+        System.out.println(num++);
+        try {
+            Runnable runnable = ()->{
+                map.put(1,num);
+            };
+
+            Thread thread = new Thread(runnable);
+            thread.start();
+
+            Thread.sleep(3000);
+            System.out.println(map.get(1));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+        return num;
     }
    
 }
