@@ -21,7 +21,8 @@ public class ArrayListSafeTest {
 
             @Override
             public void run() {
-                for (int i = 1; i < 1000; i++) {
+                for (int i = 1; i < 10; i++) {
+                    System.out.println("A" + i);
                     list.add(i);
 
                     try {
@@ -40,7 +41,8 @@ public class ArrayListSafeTest {
 
             @Override
             public void run() {
-                for (int i = 1001; i < 2000; i++) {
+                for (int i = 1001; i < 1010; i++) {
+                    System.out.println("B" + i);
                     list.add(i);
 
                     try {
