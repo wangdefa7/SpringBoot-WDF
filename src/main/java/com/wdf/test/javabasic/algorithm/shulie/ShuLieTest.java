@@ -1,4 +1,4 @@
-package com.wdf.test.javabasic.leetcode.shulie;
+package com.wdf.test.javabasic.algorithm.shulie;
 
 
 public class ShuLieTest {

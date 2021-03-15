@@ -1,4 +1,4 @@
-package com.wdf.test.javabasic.leetcode.T202011;
+package com.wdf.test.javabasic.algorithm.T202011;
 
 /**
  * @ClassName: Test

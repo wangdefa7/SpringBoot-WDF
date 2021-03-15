@@ -1,4 +1,4 @@
-package com.wdf.test.javabasic.leetcode.shuzu;
+package com.wdf.test.javabasic.algorithm.shuzu;
 
 /**
  * @ClassName: AddShuzu

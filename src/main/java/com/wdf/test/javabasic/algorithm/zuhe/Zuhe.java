@@ -1,4 +1,4 @@
-package com.wdf.test.javabasic.leetcode.zuhe;
+package com.wdf.test.javabasic.algorithm.zuhe;
 
 import java.util.ArrayList;
 import java.util.List;

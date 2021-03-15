@@ -1,4 +1,4 @@
-package com.wdf.test.javabasic.leetcode.str;
+package com.wdf.test.javabasic.algorithm.str;
 
 /**
  * @ClassName: str
@@ -47,7 +47,7 @@ public class StrMove {
      网上的例子，一句代码
      **/
     public String strMoveNum2(String s, int n){
-        return s.substring(n, s.length()) + s.substring(0, n);
+        return s.substring(n) + s.substring(0, n);
     }
 
     /*
