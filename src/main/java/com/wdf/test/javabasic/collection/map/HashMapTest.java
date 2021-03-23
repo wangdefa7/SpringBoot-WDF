@@ -15,6 +15,11 @@ public class HashMapTest {
     public static final ConcurrentHashMap<String,String> firstHashMap = new ConcurrentHashMap<String, String>();
 
     public static void main(String[] args) throws InterruptedException {
+        //测试map的并发问题
+        concurrent();
+    }
+
+    public static void concurrent() throws InterruptedException {
         Thread t1 = new Thread() {
             public void run() {
                 for (int i = 0; i < 250; i++) {
@@ -31,11 +36,11 @@ public class HashMapTest {
         };
         t1.start();
         t2.start();
-        Thread.currentThread().sleep(1000);
+        Thread.sleep(1000);
         for (int l = 0; l < 500; l++) {
             //System.out.println(String.valueOf(l) + ":" + firstHashMap.get(String.valueOf(l)));
             if (!String.valueOf(l).equals(firstHashMap.get(String.valueOf(l)))) {
-                System.out.println(String.valueOf(l) + ":" + firstHashMap.get(String.valueOf(l)));
+                System.out.println(l + ":" + firstHashMap.get(String.valueOf(l)));
             }
         }
     }

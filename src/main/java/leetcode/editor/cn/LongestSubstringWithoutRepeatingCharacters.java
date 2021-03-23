@@ -53,7 +53,7 @@ public class LongestSubstringWithoutRepeatingCharacters{
 		String s = "pwwkew";
 		System.out.println(solution.lengthOfLongestSubstring(s));
 	}
-//leetcode submit region begin(Prohibit modification and deletion)
+//algorithm submit region begin(Prohibit modification and deletion)
 class Solution {
 	public int lengthOfLongestSubstring(String s) {
 		int i = 0;
@@ -104,6 +104,6 @@ class Solution {
     	return max;
     }*/
 }
-//leetcode submit region end(Prohibit modification and deletion)
+//algorithm submit region end(Prohibit modification and deletion)
 
 }
