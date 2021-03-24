@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wdf.test.sql.mybatis.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.wdf.test.sql.mybatis.domain.User">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="userName" jdbcType="VARCHAR" property="userName" />
+        <result column="passWord" jdbcType="VARCHAR" property="passWord" />
+    </resultMap>
+
+    <select id="selectByName" parameterType="String" resultType="com.wdf.test.sql.mybatis.domain.User">
+        select * from users where name = #{name}
+    </select>
+
+    <select id="select" resultType="com.wdf.test.sql.mybatis.domain.User">
+        select * from users for update
+    </select>
+
+    <select id="selectPerms" parameterType="String" resultType="String" >
+    	select perms from users where id = #{id}
+    </select>
+
+    <update id="updateAuthor">
+      update users set
+        username = #{username},
+        password = #{password},
+        email = #{email},
+        bio = #{bio}
+      where id = #{id}
+    </update>
+
+</mapper>
