@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public class TxtAndCsvUtils {
+
 	// 日志初始化
 	protected static Logger logger = LoggerFactory.getLogger(TxtAndCsvUtils.class);
 	
