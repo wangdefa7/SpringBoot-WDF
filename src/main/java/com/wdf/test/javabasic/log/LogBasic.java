@@ -31,7 +31,7 @@ public class LogBasic {
 		try{
 			System.out.println(1/0);
 		}catch (Exception e){
-			logger.error("测试异常打印：",e);
+			logger.error("测试异常打印：{}","1223",e);
 		}
 	}
 }
