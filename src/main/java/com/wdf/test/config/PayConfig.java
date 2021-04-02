@@ -27,7 +27,7 @@ public class PayConfig implements ApplicationRunner {
     private Logger logger = LoggerFactory.getLogger(PayConfig.class);
 
     //@Value("${payConfig}")
-    private String payConfig;
+    private String payConfig = "";
 
     private final Map<String, String> payConfigMap = new HashMap<>();
 
