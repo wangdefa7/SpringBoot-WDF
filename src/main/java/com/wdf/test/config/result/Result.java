@@ -33,8 +33,8 @@ public class Result implements Serializable {
     }
 
     public Result(Object data){
-        this.code = resultCode.code();
-        this.message = resultCode.message();
+//        this.code = resultCode.code();
+//        this.message = resultCode.message();
         this.data = data;
     }
 
