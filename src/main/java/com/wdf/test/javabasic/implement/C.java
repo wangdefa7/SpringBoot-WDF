@@ -2,7 +2,8 @@ package com.wdf.test.javabasic.implement;
 
 public interface C extends A,B{
 
-    public void b();
+    @Override
+    void b();
 
-    public void f();
+    void f();
 }
