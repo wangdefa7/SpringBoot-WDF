@@ -16,7 +16,8 @@ public class FixedThreadPoolTest {
 
     public static void main(String[] args) {
         //Executor executor = Executors.newFixedThreadPool();//提示不安全
-        Executor executor = Executors.newFixedThreadPool(3);
+        //Executor executor = Executors.newFixedThreadPool(3);
+        Executor executor = Executors.newCachedThreadPool();
         Runnable runnable =  () -> {
             for (int j = 0; j < 3; j++) {
                 System.out.println("" + j + "--" );
