@@ -15,6 +15,17 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ExecutorPoolTest {
 
 
+        /**
+         * 例子过程：
+         * 初始化：核心线程数： +2  活跃线程数： +2
+         * 进入线程池的任务创建过程：
+         * 1： 活跃线程数： 2  核心线程数： 2  最大线程数：4  队列：0
+         * 2： 活跃线程数： 2  核心线程数： 2  最大线程数：4  队列：1
+         * 3： 活跃线程数： 2  核心线程数： 2  最大线程数：4  队列：2
+         * 4： 活跃线程数： 3  核心线程数： 2  最大线程数：4  队列：2
+         * 5： 活跃线程数： 4  核心线程数： 2  最大线程数：4  队列：2
+         * 6： 活跃线程数： +1  核心线程数： 2  最大线程数：4  队列：2
+         **/
         public static void main(String[] args) throws InterruptedException, IOException {
             int corePoolSize = 2;
             int maximumPoolSize = 4;
@@ -27,11 +38,14 @@ public class ExecutorPoolTest {
             ThreadPoolExecutor executor = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, unit,
                     workQueue, threadFactory, handler);
             // 预启动所有核心线程
-            executor.prestartAllCoreThreads();
+            System.out.println("初始化-- ActiveCount:" + executor.getActiveCount() + " CorePoolSize:" + executor.getCorePoolSize() + " workQueue:" + workQueue.size());
+            //预先启动所有核心线程，会导致第一个线程在用，后面的任务会直接进入队列
+            //executor.prestartAllCoreThreads();
+            System.out.println("初始化核心线程池-- ActiveCount:" + executor.getActiveCount() + " CorePoolSize:" + executor.getCorePoolSize() + " workQueue:" + workQueue.size());
             //加入阻塞队列
             DelayQueue<MyTask> queue = new DelayQueue<>();
             for (int i = 1; i <= 10; i++) {
-                System.out.println("ActiveCount:" + executor.getActiveCount() + " CorePoolSize:" + executor.getCorePoolSize() + " workQueue:" + workQueue.size());
+                System.out.println("i = " + i +" ActiveCount:" + executor.getActiveCount() + " CorePoolSize:" + executor.getCorePoolSize() + " workQueue:" + workQueue.size());
                 MyTask task = new MyTask(String.valueOf(i),i * 1000);
                 queue.put(task);
                 executor.execute(task);
@@ -118,7 +132,7 @@ public class ExecutorPoolTest {
             public int compareTo(Delayed o) {
                 MyTask myTask = (MyTask) o;
                 int diff = (int)(this.time - myTask.getTime());
-                System.out.println("排序时间差：" + diff);
+                //System.out.println("排序时间差：" + diff);
                 return diff;
             }
         }
