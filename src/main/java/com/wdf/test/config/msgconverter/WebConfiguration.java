@@ -23,7 +23,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
-@Configuration
+//@Configuration
 //@Order(-2147483648)
 @Order(10)
 public class WebConfiguration implements WebMvcConfigurer, ServletContextInitializer {
