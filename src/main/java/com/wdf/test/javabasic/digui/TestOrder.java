@@ -12,7 +12,7 @@ package com.wdf.test.javabasic.digui;
 public class TestOrder {
 
 	public static void main(String[] args) {
-		System.out.println(orderTest(3,false));;
+		System.out.println(orderTest(3,false));
 	}
 	
 	public static String orderTest(int num,boolean flag) {

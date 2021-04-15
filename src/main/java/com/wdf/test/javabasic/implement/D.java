@@ -4,6 +4,7 @@ package com.wdf.test.javabasic.implement;
  * 如果实现接口就要全部实现
  */
 public class D implements C{
+
     @Override
     public void c() {
 
@@ -22,5 +23,9 @@ public class D implements C{
     @Override
     public void f() {
 
+    }
+
+    public static void main(String[] args) {
+        //System.out.println(super.a);
     }
 }

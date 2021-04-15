@@ -1,4 +1,4 @@
-package com.wdf.test.javabasic.leetcode.shulie;
+package com.wdf.test.javabasic.algorithm.shulie;
 
 /**
  * 非递减数列
@@ -8,7 +8,7 @@ public class Feidijianshulie {
     public static void main(String[] args) {
         Feidijianshulie a = new Feidijianshulie();
         int[] s = {4,2,3};
-        System.out.println(a.checkPossibility2(s));;
+        System.out.println(a.checkPossibility2(s));
     }
 
     public boolean checkPossibility(int[] nums) {

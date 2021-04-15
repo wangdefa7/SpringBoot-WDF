@@ -77,7 +77,7 @@ public class 两数相加{
       ListNode(int val) { this.val = val; }
       ListNode(int val, ListNode next) { this.val = val; this.next = next; }
   }
-//leetcode submit region begin(Prohibit modification and deletion)
+//algorithm submit region begin(Prohibit modification and deletion)
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -122,6 +122,6 @@ class Solution {
     	return l3.next;
     }
 }
-//leetcode submit region end(Prohibit modification and deletion)
+//algorithm submit region end(Prohibit modification and deletion)
 
 }

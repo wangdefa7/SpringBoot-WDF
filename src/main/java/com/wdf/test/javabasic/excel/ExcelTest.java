@@ -4,15 +4,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.lang.Number;
+import java.util.Date;
 
 import jxl.Workbook;
 import jxl.format.Colour;
-import jxl.write.Label;
-import jxl.write.WritableCellFormat;
-import jxl.write.WritableFont;
-import jxl.write.WritableSheet;
-import jxl.write.WritableWorkbook;
-import jxl.write.WriteException;
+import jxl.write.*;
 import jxl.write.biff.RowsExceededException;
 
 public class ExcelTest {
@@ -51,9 +48,9 @@ public class ExcelTest {
             // 6：模拟数据库导入数据 注意起始行为1
             for (int i = 1; i < 100; i++) {
                 //添加编号
-                sheet.addCell(new Label(0, i, new String("编号"+i)));
+                sheet.addCell(new Label(0, i, "编号" + i));
                 //添加密码
-                sheet.addCell(new Label(1, i, new String("编号"+i)));
+                sheet.addCell(new Label(1, i, "编号" + i));
             }
             workbook.write();
             workbook.close();
@@ -184,4 +181,5 @@ public class ExcelTest {
 		workbook.close();
 		out.close();
 	}
+
 }

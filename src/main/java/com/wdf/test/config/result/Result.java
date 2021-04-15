@@ -32,6 +32,12 @@ public class Result implements Serializable {
         this.data = data;
     }
 
+    public Result(Object data){
+//        this.code = resultCode.code();
+//        this.message = resultCode.message();
+        this.data = data;
+    }
+
     public static Result success(){
         Result result = new Result();
         result.setResultCode(ResultCode.SUCCESS);

@@ -26,5 +26,12 @@ public class LogBasic {
 		logger.info("[{}]  [{}]",msg,msg);
 		logger.info("{} - {} - {}",msg,msg,msg);
 		logger.info("{}",msg);//日志最简单格式
+		logger.info(msg,msg);
+
+		try{
+			System.out.println(1/0);
+		}catch (Exception e){
+			logger.error("测试异常打印：{}","1223",e);
+		}
 	}
 }
