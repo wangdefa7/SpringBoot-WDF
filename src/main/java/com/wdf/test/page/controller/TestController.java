@@ -1,5 +1,6 @@
 package com.wdf.test.page.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -34,7 +36,8 @@ public class TestController {
 
     @RequestMapping("/testFile")
     @ResponseBody
-    public byte[] testFile(){
+    public JSONObject testFile(){
+        Map map = new HashMap();
         File file = new File("D:\\a.xls");
         String msg = null;
         byte[] bytes = null;
@@ -44,8 +47,9 @@ public class TestController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+        map.put("data",bytes);
         System.out.println(bytes);
-        return bytes;
+        JSONObject jsonObject = new JSONObject(map);
+        return jsonObject;
     }
 }
