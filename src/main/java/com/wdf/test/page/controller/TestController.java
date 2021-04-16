@@ -1,19 +1,30 @@
 package com.wdf.test.page.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.wdf.test.javabasic.http.util.PostUtil;
+import com.wdf.test.javabasic.io.FileInputStreamTest;
+import org.apache.commons.io.FileUtils;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.*;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
+
+import static java.lang.Byte.parseByte;
 
 /**
  * @ClassName: TestController
@@ -33,6 +44,94 @@ public class TestController {
         logger.info(map.toString());
         return map.toString();
     }
+
+    /**
+     * @Author WDF
+     * @Description 模拟服务端
+     * @Date 2021/4/16 9:54
+     * @Param []
+     * @return java.util.Map
+     **/
+    @RequestMapping("/testMapStream")
+    @ResponseBody
+    public JSONObject testMap() throws IOException {
+        //String  path = "E:\\a.xlsx";
+        String  path = "E:\\a.msi";
+        File file = new File(path);
+        byte[] bytes = FileUtils.readFileToByteArray(file);
+        StringBuilder str = new StringBuilder();
+        String[] strings = new String[bytes.length];
+//        for (int i = 0; i < bytes.length; i++) {
+//            //str.append(bytes[i] + ",");
+//            strings[i] = String.valueOf(bytes[i]);
+//        }
+//        Map map = new HashMap<String,Object>(1);
+//        map.put("data", strings);
+        //System.out.println(map);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("data",bytes);
+        return jsonObject;
+    }
+
+    /**
+     * @Author WDF
+     * @Description 模拟客户端
+     * @Date 2021/4/16 9:54
+     * @Param []
+     * @return java.lang.String
+     **/
+    @RequestMapping("/testMapStream2")
+    @ResponseBody
+    public String testMapStream2(){
+        String  path = "E:\\b.msi";
+        String json = PostUtil.doPostTestOne("http://localhost/testMapStream");
+        //HashMap hashMap
+        JSONObject jsonObject = JSON.parseObject(json);
+        //String str = String.valueOf(hashMap.get("data"));
+       // System.out.println(str);
+        //System.out.println("str"+str.length());
+        //String[] strArra = (String[]) jsonObject.getBytes("data");
+        System.out.println("jsonObject");
+        byte[] bytes = jsonObject.getBytes("data");
+        System.out.println("数组长度："+ bytes.length);
+//        byte[] bytes = new byte[strArra.length];
+//        for (int i = 0; i < strArra.length; i++) {
+//            bytes[i] = Byte.parseByte(strArra[i]);
+//        }
+        BufferedOutputStream bos = null;
+        FileOutputStream fos = null;
+        File file = null;
+        try {
+            File dir = new File(path);
+            if(!dir.exists()&&dir.isDirectory()){//判断文件目录是否存在
+                dir.mkdirs();
+            }
+            file = new File(path);
+            fos = new FileOutputStream(file);
+            bos = new BufferedOutputStream(fos);
+            bos.write(bytes);
+            bos.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (bos != null) {
+                try {
+                    bos.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+        return "ok";
+    }
+
 
     @RequestMapping("/testFile")
     @ResponseBody

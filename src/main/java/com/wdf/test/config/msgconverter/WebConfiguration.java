@@ -33,7 +33,7 @@ public class WebConfiguration implements WebMvcConfigurer, ServletContextInitial
     public WebConfiguration() {
     }
 
-    @Bean
+    //@Bean
     public WebServerFactoryCustomizer<ConfigurableWebServerFactory> webServerFactoryCustomizer() {
         return (factory) -> {
             ErrorPage page404 = new ErrorPage(HttpStatus.NOT_FOUND, "/framework/error/404");
@@ -41,12 +41,12 @@ public class WebConfiguration implements WebMvcConfigurer, ServletContextInitial
         };
     }
 
-    @Bean
+    //@Bean
     public HttpMessageConverter json2DataObjectConverter() {
         return new JSON2DataObjectConverter();
     }
 
-    @Bean
+    //@Bean
     public HttpMessageConverter form2DataObjectConverter() {
         return new Form2DataObjectConverter();
     }

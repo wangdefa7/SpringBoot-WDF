@@ -1,10 +1,12 @@
 package com.wdf.test.javabasic.io;
 
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FileInputStreamTest {
 
-    public static String  path = "E:\\GFData.txt";
+    public static String  path = "E:\\test.txt";
 
     public static void main(String[] args) {
         readTxt();
@@ -36,18 +38,33 @@ public class FileInputStreamTest {
         }
     }
 
-    public static void readTxt(){
+    public static Map readTxt(){
         File file = new File(path);
+        Map map = new HashMap<String,Object>(1);
+        map.put("file",file);
+
         InputStream in = null;
         byte[] tempByte = new byte[1024];
         int byteread = 0;
-
         try {
             System.out.println("以字节为单位读取文件内容，一次读多个字节：");
-            in = new FileInputStream(file);
-            while ((byteread = in.read(tempByte)) != -1 ) {
-                System.out.write(tempByte, 0, byteread);
-            }
+            File file1 = (File) map.get("file");
+            in = new FileInputStream(file1);
+//            while ((byteread = in.read(tempByte)) != -1 ) {
+//                System.out.write(tempByte, 0, byteread);
+//            }
+            map.put("data",in);
+            //in.close();
+//            InputStream in2 = (InputStream) map.get("data");
+//            System.out.println(in2.available());
+//            StringBuilder str = new StringBuilder();
+//            while ((byteread = in2.read(tempByte)) != -1 ) {
+//                System.out.write(tempByte, 0, byteread);
+//                str.append(tempByte);
+//            }
+//            System.out.println(str.toString());
+//            in2.close();
+            return map;
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -56,14 +73,10 @@ public class FileInputStreamTest {
             e.printStackTrace();
         }finally{
             if (in != null) {
-                try {
-                    in.close();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                //in.close();
             }
         }
+        return map;
     }
 
     public static void readTxt2() {
