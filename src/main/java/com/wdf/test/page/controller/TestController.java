@@ -56,18 +56,11 @@ public class TestController {
     @ResponseBody
     public JSONObject testMap() throws IOException {
         //String  path = "E:\\a.xlsx";
-        String  path = "E:\\a.msi";
+        String  path = "D:\\a.txt";
         File file = new File(path);
         byte[] bytes = FileUtils.readFileToByteArray(file);
         StringBuilder str = new StringBuilder();
         String[] strings = new String[bytes.length];
-//        for (int i = 0; i < bytes.length; i++) {
-//            //str.append(bytes[i] + ",");
-//            strings[i] = String.valueOf(bytes[i]);
-//        }
-//        Map map = new HashMap<String,Object>(1);
-//        map.put("data", strings);
-        //System.out.println(map);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("data",bytes);
         return jsonObject;
@@ -83,21 +76,12 @@ public class TestController {
     @RequestMapping("/testMapStream2")
     @ResponseBody
     public String testMapStream2(){
-        String  path = "E:\\b.msi";
+        String  path = "D:\\b.txt";
         String json = PostUtil.doPostTestOne("http://localhost/testMapStream");
-        //HashMap hashMap
         JSONObject jsonObject = JSON.parseObject(json);
-        //String str = String.valueOf(hashMap.get("data"));
-       // System.out.println(str);
-        //System.out.println("str"+str.length());
-        //String[] strArra = (String[]) jsonObject.getBytes("data");
         System.out.println("jsonObject");
         byte[] bytes = jsonObject.getBytes("data");
         System.out.println("数组长度："+ bytes.length);
-//        byte[] bytes = new byte[strArra.length];
-//        for (int i = 0; i < strArra.length; i++) {
-//            bytes[i] = Byte.parseByte(strArra[i]);
-//        }
         BufferedOutputStream bos = null;
         FileOutputStream fos = null;
         File file = null;
