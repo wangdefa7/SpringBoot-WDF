@@ -17,8 +17,34 @@ public class ListTest {
 	
 	public static void main(String[] args) {
 		ListTest listTest  = new ListTest();
-		listTest.removeElement();
-		listTest.listIncludeMap();
+		listTest.testForEach();
+//		listTest.removeElement();
+//		listTest.listIncludeMap();
+	}
+
+	private void testForEach(){
+		String var = "1";
+		//正例：
+		List<String> list = new ArrayList<>();
+		List<String> list2 = new ArrayList<>();
+		list.add("1");
+		list.add("2");
+		list2.addAll(list);
+		Iterator<String> iterator = list.iterator();
+		while (iterator.hasNext()) {
+			String item = iterator.next();
+			if (item.equals(var)) {
+				iterator.remove();
+			}
+		}
+		System.out.println(list2.size());
+		//反例：
+		for (String item : list2) {
+			if (var.equals(item)) {
+				list.remove(item);
+			}
+		}
+
 	}
 	
 	public void removeElement() {

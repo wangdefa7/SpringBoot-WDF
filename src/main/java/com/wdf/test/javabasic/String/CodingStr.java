@@ -2,6 +2,8 @@ package com.wdf.test.javabasic.String;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @ClassName: CodingStr
@@ -16,8 +18,28 @@ public class CodingStr {
     public static void main(String[] args) throws UnsupportedEncodingException {
         CodingStr main = new CodingStr();
         //main.testErrorStr();
-        main.testCoding();
+        //main.testCoding();
+        main.testDecode();
 
+    }
+
+    /**
+     * @Author WDF
+     * @Description 测试编码解码
+     * @Date 2021/4/20 16:34
+     * @Param []
+     * @return void
+     **/
+    private void testDecode() {
+        String str = "%@是";
+        try {
+            str = URLEncoder.encode(str,"UTF-8");
+            System.out.println(str);
+            str = URLDecoder.decode(str,"UTF-8");
+            System.out.println(str);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
     public void testErrorStr(){
@@ -26,10 +48,10 @@ public class CodingStr {
         try {
             System.out.println( URLDecoder.decode(str,"UTF-8"));
             gbk2UtfString = new String(str.getBytes("GBK"), "Unicode");//
-            gbk2UtfString = new String(str.getBytes("Unicode"), "UTF-8");//Unicode
+            gbk2UtfString = new String(str.getBytes("Unicode"), StandardCharsets.UTF_8);//Unicode
 
             System.out.println("GBK转换成UTF-8：" + gbk2UtfString);
-            String gbk2Utf2GbkString = new String(gbk2UtfString.getBytes("UTF-8"), "GBK");
+            String gbk2Utf2GbkString = new String(gbk2UtfString.getBytes(StandardCharsets.UTF_8), "GBK");
             System.out.println("GBK转换成UTF-8再转成GBK：" + gbk2Utf2GbkString);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -61,15 +83,15 @@ public class CodingStr {
     public void testCoding() throws UnsupportedEncodingException {
 
         String name = "张三";
-        byte[] b1 = name.getBytes("UTF-8");
-        String name1 = new String(b1, "UTF-8"); //编码解码相同，正常显示
+        byte[] b1 = name.getBytes(StandardCharsets.UTF_8);
+        String name1 = new String(b1, StandardCharsets.UTF_8); //编码解码相同，正常显示
         System.out.println(name1);
         String name2 = new String(b1, "GBK"); //编码解码不同，乱码
         System.out.println(name2);
         byte[] b2 = name.getBytes("GBK");
         String name3 = new String(b2, "GBK"); //编码解码相同，正常显示
         System.out.println(name3);
-        String name4 = new String(b2, "UTF-8"); //编码解码不同，乱码
+        String name4 = new String(b2, StandardCharsets.UTF_8); //编码解码不同，乱码
         System.out.println(name4);
     }
 }

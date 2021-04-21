@@ -33,9 +33,9 @@ public class TestStreamController {
      * @Param []
      * @return java.util.Map
      **/
-    @RequestMapping("/testMapStream")
+    @RequestMapping("/testMap2Stream")
     @ResponseBody
-    public JSONObject testMap() throws IOException {
+    public JSONObject testMap2() throws IOException {
         //String  path = "E:\\a.xlsx";
         String  path = "E:\\a.msi";
         File file = new File(path);
@@ -53,11 +53,11 @@ public class TestStreamController {
      * @Param []
      * @return java.lang.String
      **/
-    @RequestMapping("/testMapStream2")
+    @RequestMapping("/testMap2Stream2")
     @ResponseBody
-    public String testMapStream2(){
+    public String testMap2Stream2(){
         String  path = "E:\\b.msi";
-        String json = PostUtil.doPostTestOne("http://localhost/stream/testMapStream");
+        String json = PostUtil.doPostTestOne("http://localhost/stream/testMap2Stream");
         JSONObject jsonObject = JSON.parseObject(json);
         System.out.println("jsonObject");
         byte[] bytes = jsonObject.getBytes("data");
