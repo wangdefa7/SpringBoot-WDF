@@ -19,14 +19,34 @@ public class ParaseNumTest {
 	}
 
 	private void testInteger(){
-		Integer a_big = new Integer(155);
-		int b_big = 155;
+		int b_big = 15;
+		Integer a_big = new Integer(b_big);
+		Integer c_big = new Integer(b_big);
+		Integer d_big = b_big;
+		Integer e_big = b_big;
 		if (a_big == b_big){
 			System.out.println("==");
 		}
 		if (a_big.equals(b_big)){
 			System.out.println("equals");
 		}
+		System.out.println("-----------");
+		//包装类型之间不相等，需要用equals进行比较。
+		if (a_big == c_big){
+			System.out.println("==");
+		}
+		if (a_big.equals(c_big)){
+			System.out.println("equals");
+		}
+		System.out.println("-----------");
+		//超出了int的范围(128)，就会类似于String一样，new一个新的对象.如果在范围内会相等
+		if (d_big == e_big){
+			System.out.println("==");
+		}
+		if (d_big.equals(e_big)){
+			System.out.println("equals");
+		}
+
 	}
 
 	private void testParse(){
