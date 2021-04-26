@@ -7,6 +7,7 @@ import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreato
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Lazy;
 
 /**
  * Shiro Config Manager.
@@ -18,6 +19,7 @@ public class ShiroManager {
     /**
      * 保证实现了Shiro内部lifecycle函数的bean执行
      */
+    @Lazy
     @Bean(name = "lifecycleBeanPostProcessor")
     @ConditionalOnMissingBean
     public LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
@@ -29,6 +31,7 @@ public class ShiroManager {
      *
      * @return
      */
+    @Lazy
     @Bean(name = "defaultAdvisorAutoProxyCreator")
     @ConditionalOnMissingBean
     @DependsOn("lifecycleBeanPostProcessor")
@@ -44,6 +47,7 @@ public class ShiroManager {
      * @param securityManager
      * @return
      */
+    @Lazy
     @Bean
     @ConditionalOnMissingBean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(DefaultSecurityManager securityManager) {

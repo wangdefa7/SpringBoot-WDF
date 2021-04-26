@@ -25,6 +25,7 @@ public class HashMapTestBasic {
         Map map2 = new HashMap<>();
         map2 = (Map) map.get("data");
         System.out.println(map2);
+        map.isEmpty();
 
     }
 
@@ -38,6 +39,7 @@ public class HashMapTestBasic {
     private void testMap2() {
        StringBuilder s1 = new StringBuilder();
        StringBuilder s2 = new StringBuilder();
+       System.out.println(s1.hashCode());
        System.out.println(s1.hashCode());
        s1 = new StringBuilder();
        System.out.println(s1.hashCode());

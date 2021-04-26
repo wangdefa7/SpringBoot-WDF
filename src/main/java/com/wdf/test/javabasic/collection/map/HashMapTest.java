@@ -21,6 +21,7 @@ public class HashMapTest {
 
     public static void concurrent() throws InterruptedException {
         Thread t1 = new Thread() {
+            @Override
             public void run() {
                 for (int i = 0; i < 250; i++) {
                     firstHashMap.put(String.valueOf(i), String.valueOf(i));
@@ -28,12 +29,14 @@ public class HashMapTest {
             }
         };
         Thread t2 = new Thread() {
+            @Override
             public void run() {
                 for (int j = 250; j < 500; j++) {
                     firstHashMap.put(String.valueOf(j), String.valueOf(j));
                 }
             }
         };
+
         t1.start();
         t2.start();
         Thread.sleep(1000);
